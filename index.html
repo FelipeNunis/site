@@ -49,6 +49,84 @@
     #contact-button, #linkedin-button { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.2); position: fixed; z-index: 100; cursor: pointer; bottom: 1rem; }
     #contact-button { right: 1rem; background: var(--primary); color: white; }
     #linkedin-button { right: calc(1rem + 48px + 0.5rem); background: #0A66C2; color: white; }
+    /* Estilo para a seção de Conquistas */
+    #achievements {
+        padding: 50px 20px;
+        background-color: #f8f9fa; /* Cor de fundo leve para destacar a seção */
+        text-align: center;
+    }
+
+    #achievements h2 {
+        margin-bottom: 40px;
+        color: #333;
+        font-size: 2.2em;
+    }
+
+    /* Estilo para a grade dos badges */
+    .achievements-grid {
+        display: grid;
+        /* Se tiver apenas um item, ele centralizará por padrão devido ao margin: 0 auto; no pai */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsivo: 200px mínimo, 1fr máximo */
+        gap: 30px; /* Espaçamento entre os badges */
+        max-width: 1200px;
+        margin: 0 auto; /* Centraliza a grade */
+        padding: 20px;
+    }
+
+    /* Estilo para cada item/badge individual */
+    .achievement-item {
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 25px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* Adicionado para centralizar um único item na grade, se a grade só tiver 1 coluna */
+        margin: 0 auto; /* Isso vai centralizar o item dentro da célula da grid */
+        max-width: 250px; /* Um max-width para o item, se ele estiver sozinho */
+    }
+
+    .achievement-item:hover {
+        transform: translateY(-5px); /* Efeito de elevação ao passar o mouse */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .achievement-item img {
+        max-width: 120px; /* Tamanho máximo para os logos */
+        height: auto;
+        margin-bottom: 15px;
+        object-fit: contain; /* Garante que a imagem se encaixe sem distorcer */
+    }
+
+    .achievement-text {
+        font-size: 1.1em;
+        font-weight: 600;
+        color: #555;
+        margin-bottom: 5px;
+    }
+
+    .certification-type {
+        font-size: 0.9em;
+        color: #007bff; /* Cor para destacar o tipo de certificação */
+        font-weight: 500;
+        line-height: 1.3; /* Ajusta o espaçamento da linha para o ano */
+    }
+
+    /* Responsividade básica para telas menores */
+    @media (max-width: 768px) {
+        .achievements-grid {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .achievement-item img {
+            max-width: 100px;
+        }
+    }
   </style>
 </head>
 <body class="lang-pt">
@@ -725,7 +803,16 @@
       </li>
     </ul>
   </section>
+  <section id="achievements">
+    <h2><span class="lang-pt">Conquistas & Certificações</span><span class="lang-en">Achievements & Certifications</span></h2>
+    <div class="achievements-grid">
+        <div class="achievement-item">
+            <img src="site/pagbank-logo-0-1.png" alt="Logo PagBank" title="PagBank - Certificação ISO 22301 (2024)">
+            <p class="achievement-text"><span class="lang-pt">PagBank</span><span class="lang-en">PagBank</span></p>
+            <span class="certification-type">ISO 22301 <br> 2024</span> </div>
 
+        </div>
+  </section>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       feather.replace();
