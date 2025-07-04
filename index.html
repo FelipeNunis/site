@@ -1,236 +1,295 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=deviice-width, inicial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Felipe Duo</title>
-    <link rel="stylesheet" href="css\estilos.css" />
-    <link rel="icon" type="imagem/png" href="img\favicon.png" />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Felipe Duo – Portfolio Interativo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <style>
+    /* Variables */
+    :root { --primary: #334155; --accent: #64748B; --neutral-light: #F8FAFC; --neutral-dark: #E2E8F0; --text-light: #1F2937; --text-dark: #0F172A; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Inter', sans-serif; background: var(--neutral-light); color: var(--text-light); transition: background 0.3s, color 0.3s; }
+    body.dark { background: var(--text-light); color: var(--text-dark); }
+    /* Language toggle */
+    .lang-pt .lang-pt, .lang-en .lang-en { display: inline; }
+    .lang-pt .lang-en, .lang-en .lang-pt { display: none; }
+    /* Controls */
+    #controls { position: fixed; top: 1rem; right: 1rem; display: flex; gap: 0.5rem; z-index: 100; }
+    #controls button { background: var(--primary); color: white; border: none; padding: 0.5rem; border-radius: 4px; cursor: pointer; }
+    /* Header */
+    header { text-align: center; padding: 4rem 2rem; background: var(--primary); color: white; }
+    header h1 { margin: 0; font-size: 2.5rem; }
+    header p { margin: 0.5rem 0 0; font-size: 1rem; }
+    /* Sections */
+    section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    #about p { background: var(--neutral-dark); padding: 1rem; border-radius: 8px; line-height: 1.6; }
+    /* Cards */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 1rem; margin-top: 1rem; }
+    .cards.hide-others .card:not(.active) { display: none; }
+    .card { background: var(--neutral-dark); padding: 1.5rem; border-radius: 12px; text-align: center; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform 0.4s ease, box-shadow 0.4s ease; border: 2px solid transparent; }
+    .card i { font-size: 2rem; margin-bottom: 0.5rem; }
+    .card span { font-weight: 600; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .card.active { background: var(--accent); color: white; border-color: var(--primary); }
+    .content { max-height: 0; overflow: hidden; transition: max-height 0.6s ease-in-out; background: var(--neutral-dark); padding: 0 1.5rem; border-radius: 12px; margin-top: 0; position: relative; }
+    .content.active { max-height: 600px; padding: 1.5rem; margin-top: 1rem; border: 2px solid var(--primary); }
+    .close-btn { position: absolute; top: 8px; right: 12px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
+    /* Skills List */
+    .skills-list { list-style: none; padding: 0; }
+    .skill-item { background: var(--neutral-dark); padding: 0.75rem 1rem; border-radius: 8px; cursor: pointer; margin-bottom: 0.5rem; transition: background 0.3s; }
+    .skill-item:hover { background: var(--accent); color: white; }
+    .skill-content { max-height: 0; overflow: hidden; transition: max-height 0.6s ease-in-out; padding-left: 1.5rem; margin-top: 0.5rem; font-size: 0.9rem; border-left: 3px solid var(--primary); }
+    .skill-content.active { max-height: 5rem; /* Ajuste conforme necessário para o conteúdo do skill-item */ }
+    /* Responsive */
+    @media (max-width: 768px) { .cards { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); } }
+    @media (max-width: 480px) { .cards { grid-template-columns: 1fr; } }
+    /* Floating contact buttons */
+    #contact-button, #whatsapp-button, #linkedin-button { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.2); position: fixed; z-index: 100; cursor: pointer; }
+    #contact-button { bottom: 1rem; right: 1rem; background: var(--primary); color: white; }
+    #whatsapp-button { bottom: 1rem; right: 5.5rem; background: #25D366; color: white; }
+    #linkedin-button { bottom: 1rem; right: 10rem; background: #0A66C2; color: white; }
+  </style>
+</head>
+<body class="lang-pt">
+  <div id="controls">
+    <button id="theme-toggle">🌙</button>
+    <button id="lang-toggle">EN</button>
+  </div>
+  <a id="contact-button" href="mailto:felipenunis@yahoo.com.br" title="Email"><i data-feather="mail"></i></a>
+  <a id="whatsapp-button" href="https://wa.me/5511941041657" title="WhatsApp" target="_blank"><i data-feather="message-circle"></i></a>
+  <a id="linkedin-button" href="https://www.linkedin.com/in/felipe-duo-%F0%9F%8F%B3%EF%B8%8F%E2%80%8D%F0%9F%8C%88-209651127/" title="LinkedIn" target="_blank"><i data-feather="linkedin"></i></a>
 
-    <script src="https://use.fontawesome.com/2abfe92826.js"></script>
-    
+  <header>
+    <h1>Felipe Duo</h1>
+    <p>
+      <span class="lang-pt">Perfil – Analista de Continuidade – Felipe Duo | Continuidade & Segurança da Informação | BIA | Gestão de Crises | ISO 22301 | Power BI | LGPD</span>
+      <span class="lang-en">Profile – Continuity Analyst – Felipe Duo | Business Continuity & InfoSec | BIA | Crisis Management | ISO 22301 | Power BI | LGPD</span>
+    </p>
+  </header>
 
-  </head>
+  <section id="about">
+    <h2><span class="lang-pt">Sobre</span><span class="lang-en">About</span></h2>
+    <p>
+      <span class="lang-pt"><strong>Profissional com experiência em GCN</strong>, implementando a ISO 22301 com COBIT, ITIL e gestão de riscos. Conduzi BIAs, desenvolvi PCOs/DRPs e testes de mesa. Domínio de Power BI, Excel avançado, SQL e Python em AWS/Azure.</span>
+      <span class="lang-en"><strong>Business Continuity professional</strong>, implementing ISO 22301 aligned with COBIT, ITIL, and risk management frameworks. Conducted BIAs, developed BCP/DR plans, and tabletop tests. Proficient in Power BI, advanced Excel, SQL, and Python on AWS/Azure.</span>
+    </p>
+  </section>
 
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Felipe Nunis Duo</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <section id="experience">
+    <h2><span class="lang-pt">Experiência Técnica</span><span class="lang-en">Technical Experience</span></h2>
+    <div class="cards" id="cards">
+      <div class="card" data-target="governanca"><i data-feather="file-text"></i><span class="lang-pt">Documentos & Governança</span><span class="lang-en">Documentation & Governance</span></div>
+      <div class="card" data-target="bia"><i data-feather="bar-chart-2"></i><span>BIA</span></div>
+      <div class="card" data-target="pco"><i data-feather="clipboard"></i><span>PCO</span></div>
+      <div class="card" data-target="testes"><i data-feather="cpu"></i><span>Testes & DR</span></div>
+      <div class="card" data-target="relatorios"><i data-feather="bar-chart"></i><span>Relatórios</span></div>
+      <div class="card" data-target="treinamentos"><i data-feather="users"></i><span>Treinamentos</span></div>
+      <div class="card" data-target="facilities"><i data-feather="tool"></i><span>Facilities</span></div>
+      <div class="card" data-target="prd"><i data-feather="alert-triangle"></i><span>PRD</span></div>
+      <div class="card" data-target="auditoria"><i data-feather="check-circle"></i><span class="lang-pt">Auditoria & Compliance</span><span class="lang-en">Audit & Compliance</span></div>
+    </div>
+    <div id="governanca" class="content">
+      <button class="close-btn" onclick="closeContent()">&times;</button>
+      <h3><span class="lang-pt">Documentos & Governança</span><span class="lang-en">Documentation & Governance</span></h3>
+      <p>
+        <span class="lang-pt">Criação, revisão e gestão de políticas, procedimentos e guias de governança, assegurando a conformidade com as normas ISO e as melhores práticas do setor.</span>
+        <span class="lang-en">Creation, review, and management of governance policies, procedures, and guidelines, ensuring compliance with ISO standards and industry best practices.</span>
+      </p>
+    </div>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto"></ul>
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#sobremim">Sobre mim</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#oqueestouaprendendo">O que estou aprendendo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#projetos">Projetos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#premios">Prêmios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contato">Contato</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="indexeng.html"> <i class="fa fa-globe"></i> English </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <div id="bia" class="content">
+      <button class="close-btn" onclick="closeContent()">&times;</button>
+      <h3>BIA</h3>
+      <p>
+        <span class="lang-pt">Condução de Análise de Impacto nos Negócios (BIA) para identificar processos críticos, RTOs e RPOs, fundamentais para a criação de planos de continuidade eficazes.</span>
+        <span class="lang-en">Conducting Business Impact Analysis (BIA) to identify critical processes, RTOs, and RPOs, essential for creating effective continuity plans.</span>
+      </p>
+    </div>
 
-    
-    <section class="jumbotron text-center">
-      <div class="container">
-        <img
-          class="foto-perfil"
-          src="img\perfil.png"
-          alt="FotodePerfil-FelipeNunisDuo"
-        />
-        <h1 class="jumbotron-heading">Felipe Nunis Duo</h1>
-        <p class="lead text-muted">
-          Segurança da Informação - Banco de Dados 
-        </p>
-        <p>
-          <a href="#contato" class="btn btn-dark my-2">Contato</a>
-        </p>
-      </div>
-    </section>
+    <div id="pco" class="content">
+      <button class="close-btn" onclick="closeContent()">&times;</button>
+      <h3>PCO</h3>
+      <p>
+        <span class="lang-pt">Elaboração e manutenção de Planos de Continuidade Operacional (PCO) detalhados, incluindo estratégias de recuperação, equipes e responsabilidades.</span>
+        <span class="lang-en">Developing and maintaining detailed Business Continuity Plans (BCP), including recovery strategies, teams, and responsibilities.</span>
+      </p>
+    </div>
 
-    <div class="container">
-    <!--Sobre mim-->
-    <section class="jumbotron text-center" id="sobremim">
-        <div class="container" >
-            <h2 class="jumbotron-heading"> Sobre mim</h2>
-            <p class="lead">Olá! Meu nome é Felipe e sou um desenvolvedor voltado para segurança da informação. Atualmente eu moro em Santo André - São Paulo.
-            <p class="lead">Formação técnica em mecatrônica, durante esse período eu criei e participei de diversos projetos, muitos deles do Arduino ao Assembly. Iniciei a faculdade de tecnologia em banco de dados na Fatec São José dos Campos, mas atualmente curso Segurança da Informação na faculdade Fatec São Caetano do Sul. Tenho conhecimentos em metodologias ágeis, versionamento de arquivos (GIT), criação e manutenção de bancos de dados, redes, gestão de projetos, programação (Python, Java, C), DevOps, HTML, CSS. Ganhei o prêmio Jovem Liderança do Estado de São Paulo em 2016, por promover e desenvolver projetos que agregaram valor a alunos e professores da instituição de ensino na qual eu realizei a minha formação técnica em mecatrônica.
-             <p class="lead">A minha visão: A tecnologia é uma ferramenta poderosa! E tenho como objetivo: resolver o máximo de problemas com a ajuda dela e em parceria com uma equipe disposta a fazer a diferença! </p>
+    <div id="testes" class="content">
+      <button class="close-btn" onclick="closeContent()">&times;</button>
+      <h3><span class="lang-pt">Testes & DR</span><span class="lang-en">Testing & DR</span></h3>
+      <p>
+        <span class="lang-pt">Planejamento e execução de testes de planos de desastre (DR) e continuidade, incluindo testes de mesa e simulações completas para validação da eficácia.</span>
+        <span class="lang-en">Planning and executing disaster recovery (DR) and continuity plan tests, including tabletop exercises and full-scale simulations to validate effectiveness.</span>
+      </p>
+    </div>
+
+    <div id="relatorios" class="content">
+      <button class="close-btn" onclick="closeContent()">&times;</button>
+      <h3><span class="lang-pt">Relatórios</span><span class="lang-en">Reports</span></h3>
+      <p>
+        <span class="lang-pt">Criação de relatórios e dashboards em Power BI e Excel para monitoramento de KPIs, status de projetos e apresentação de resultados de GCN.</span>
+        <span class="lang-en">Creating reports and dashboards in Power BI and Excel for KPI monitoring, project status, and presentation of BCM results.</span>
+      </p>
+    </div>
+
+    <div id="treinamentos" class="content">
+      <button class="close-btn" onclick="closeContent()">&times;</button>
+      <h3><span class="lang-pt">Treinamentos</span><span class="lang-en">Training</span></h3>
+      <p>
+        <span class="lang-pt">Desenvolvimento e aplicação de treinamentos para conscientização sobre continuidade de negócios e segurança da informação para equipes e stakeholders.</span>
+        <span class="lang-en">Developing and delivering training sessions to raise awareness about business continuity and information security for teams and stakeholders.</span>
+      </p>
+    </div>
+
+    <div id="facilities" class="content">
+      <button class="close-btn" onclick="closeContent()">&times;</button>
+      <h3>Facilities</h3>
+      <p>
+        <span class="lang-pt">Experiência na gestão de instalações e infraestrutura para garantir ambientes seguros e resilientes para as operações de negócios.</span>
+        <span class="lang-en">Experience in facility and infrastructure management to ensure secure and resilient environments for business operations.</span>
+      </p>
+    </div>
+
+    <div id="prd" class="content">
+      <button class="close-btn" onclick="closeContent()">&times;</button>
+      <h3>PRD</h3>
+      <p>
+        <span class="lang-pt">Suporte na definição de Requisitos de Recuperação de Processos (PRD) para sistemas e aplicações críticas.</span>
+        <span class="lang-en">Support in defining Process Recovery Requirements (PRD) for critical systems and applications.</span>
+      </p>
+    </div>
+
+    <div id="auditoria" class="content">
+      <button class="close-btn" onclick="closeContent()">&times;</button>
+      <h3><span class="lang-pt">Auditoria & Compliance</span><span class="lang-en">Audit & Compliance</span></h3>
+      <p>
+        <span class="lang-pt">Participação em auditorias internas e externas, garantindo a conformidade com requisitos regulatórios e certificações como ISO 22301.</span>
+        <span class="lang-en">Participation in internal and external audits, ensuring compliance with regulatory requirements and certifications like ISO 22301.</span>
+      </p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2><span class="lang-pt">Competências</span><span class="lang-en">Skills</span></h2>
+    <ul class="skills-list">
+      <li class="skill-item">🛡️ BCP<div class="skill-content"><span class="lang-pt">Planos PDCA, validação executiva e testes anuais.</span><span class="lang-en">PDCA plans, exec validation & annual tests.</span></div></li>
+      <li class="skill-item">📊 Risk Analysis<div class="skill-content"><span class="lang-pt">BIAs com ISO 22301, COBIT, ITIL e RTO/RPO.</span><span class="lang-en">BIAs using ISO 22301, COBIT, ITIL & RTO/RPO.</span></div></li>
+      <li class="skill-item">📈 Power BI<div class="skill-content"><span class="lang-pt">Dashboards interativos integrando SharePoint e SQL.</span><span class="lang-en">Interactive dashboards integrating SharePoint & SQL.</span></div></li>
+      <li class="skill-item">📑 Excel Avançado<div class="skill-content"><span class="lang-pt">Análise avançada e automações com macros.</span><span class="lang-en">Advanced analysis & macro automations.</span></div></li>
+      <li class="skill-item">🗄️ SQL<div class="skill-content"><span class="lang-pt">Consultas e consolidações de grandes dados.</span><span class="lang-en">Large data queries & consolidation.</span></div></li>
+      <li class="skill-item">🐍 Python<div class="skill-content"><span class="lang-pt">Scripting para ETL e automação.</span><span class="lang-en">ETL scripting & automation.</span></div></li>
+    </ul>
+  </section>
+
+  <section id="timeline-list">
+    <h2><span class="lang-pt">Linha do Tempo</span><span class="lang-en">Experience</span></h2>
+    <ul class="skills-list">
+      <li class="skill-item">2022 – 2024: <span class="lang-pt">Analista de Segurança da Informação – PagBank</span><span class="lang-en">Information Security Analyst – PagBank</span>
+        <div class="skill-content">
+          <span class="lang-pt">Condução de BIAs, desenvolvimento de PCOs/DRPs, implementação de SGCN alinhado à ISO 22301 e dashboards em Power BI.</span>
+          <span class="lang-en">Led BIAs, developed BCP/DR plans, implemented BCP system aligned with ISO 22301 and Power BI dashboards.</span>
         </div>
-
-    </section>
-
-    <!--O que estou aprendendo-->
-    <section class="jumbotron text-center" id="oqueestouaprendendo">
-        <div class="container" >
-            <h2 class="jumbotron-heading text-center"> O que estou aprendendo </h2>
-                <li> Genexus </li>
-                <li> Protocolos TCP/IP</li>
-                <li> Criptografia</li>
-                <li> Configuração e monitoramento de redes (WIRESHARK)</li>
-                <li> Servidores (configuração e garantir a disponibilidade) </li>
-                <li> Linux (ubuntu e Kali), Windows Server </li>
-                <li> Em processo de Certificações da CISCO: CCNAv7, Introduction to Cybersecurity </li>
-                <li> LGPD </li>
+      </li>
+      <li class="skill-item">2021 – 2022: <span class="lang-pt">Estagiário – PagBank</span><span class="lang-en">Intern – PagBank</span>
+        <div class="skill-content">
+          <span class="lang-pt">Apoio em BIAs e PCOs, desenvolvimento de treinamentos e suporte em auditorias internas.</span>
+          <span class="lang-en">Supported BIAs and BCPs, developed trainings and assisted internal audits.</span>
         </div>
-
-    </section>
-
-     <!--Conhecimentos-->
-     <section class="jumbotron text-center" id="nabagagem">
-      <div class="container" >
-          <h2 class="jumbotron-heading text-center"> O que eu aprendi </h2>
-              <p></p>
-              <p>Linguagens de programação e marcação:
-                <li>JAVA, HTML, CSS, Python, SQL, C</li> 
-              </p>
-              <p>Metodologias Ágeis:
-                <li>Scrum, Kanban, Lean, XP, DevOps
-                </li> 
-               </p>
-              <p>Ferramentas de Gestão de projetos:
-                <li>IDF-0, BPMN, Business Canvas, Project Canvas, PDCA, 5W2H e PMBOK </li> 
-              </p>
-              <p>Manutenção:
-                <li>MTBF,MTTR, manutenção preditiva, corretiva e preventiva </li> 
-              </p>
-              
-      </div>
-
-      </section>
-
-    
-
-        <!-- Page Heading -->
-        <h1 class="my-4 text-center" id="projetos">Projetos</h1>
-      
-        <div class="row">
-          <div class="col-lg-6 mb-4">
-            <div class="card h-100">
-              <a href="https://github.com/mateuscamargo/Roose_App"><img class="card-img-top" src="img\rooseimg.png" alt="Roose Icon"></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="https://github.com/mateuscamargo/Roose_App">Projeto Roose</a>
-                </h4>
-                <p class="card-text">Roose é um protótipo de assistente pessoal virtual desenvolvido no meu primeiro semestre do tecnólogo em banco de dados. O foco é hotelaria e ele tem o objetivo de auxiliar hóspedes oferecendo serviços, maior conforto e comodidade. </p>
-                <ul>
-                    <li>Ionic</li>
-                    <li>Angular</li>
-                    <li>JS</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 mb-4">
-            <div class="card h-100">
-              <a href="https://github.com/FelipeNunis/Java"><img class="card-img-top" src="img\javaicon.jpg" alt="Java-Icon"></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="https://github.com/FelipeNunis/Java"> Projetos Java</a>
-                </h4>
-
-                <p class="card-text"> Acesso ao meu repositório onde se encontram os códigos-fonte dos meus projetos e atividades desenvolvidos em JAVA.
-                </p>
-                <ul>
-                  <li>Java</li>
-                  <li>SQL</li>
-                  <li>WorkBench</li>
-              </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 mb-4">
-            <div class="card h-100">
-              <a href="https://github.com/MikeBBatista/pi-fatec-java"><img class="card-img-top" src="img\POC.png" alt="Java-Icon"></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="https://github.com/MikeBBatista/pi-fatec-java"> Projeto POC</a>
-                </h4>
-                <p class="card-text"> POC é uma aplicação que facilita e otimiza a inserção de informações de contas despradonizadas de energia e água.
-                </p>
-                <ul>
-                  <li>Java</li>
-                  <li>SQL</li>
-                  <li>WorkBench</li>
-                  <li>Eclipse</li>
-              </ul>
-              </div>
-            </div>
-          </div>
+      </li>
+      <li class="skill-item">2020 – 2021: <span class="lang-pt">Estagiário – JetSoft Tecnologia</span><span class="lang-en">Intern – JetSoft Technology</span>
+        <div class="skill-content">
+          <span class="lang-pt">Desenvolvimento de aplicações em GeneXus, metodologias ágeis e suporte técnico.</span>
+          <span class="lang-en">Developed GeneXus applications, agile methodology, and technical support.</span>
         </div>
+      </li>
+    </ul>
+  </section>
 
-        <!--Prêmios-->
-        <section class="jumbotron text-center" id="premios">
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      feather.replace();
 
-            <div class="container">
-                <h2 class="jumbotron-heading"> Prêmios </h2>
-                <P class="lead"> Jovem Liderança do Estado de São Paulo - 2016 </P>
-            </div>
-            
-    
-        </section>
+      // Theme toggle
+      const themeBtn = document.getElementById('theme-toggle');
+      themeBtn.addEventListener('click', () => document.body.classList.toggle('dark'));
 
-        <!--Contato-->
-        <section class="jumbotron text-center" id="contato">
+      // Language toggle
+      const langBtn = document.getElementById('lang-toggle');
+      langBtn.addEventListener('click', function() {
+        if (document.body.classList.contains('lang-pt')) {
+          document.body.classList.replace('lang-pt','lang-en'); this.textContent='PT';
+        } else {
+          document.body.classList.replace('lang-en','lang-pt'); this.textContent='EN';
+        }
+      });
 
-            <div class="container">
-                <h2 class="jumbotron-heading"> Contato </h2>
-                
-                <p class="lead"><i class="fa fa-envelope"></i> <a href="mailto:felipenunis@yahoo.com.br" >felipenunis@yahoo.com.br</a> </p>
-                <p class="lead"><i class="fa fa-github"></i> <a href="https://github.com/FelipeNunis">https://github.com/FelipeNunis</a></p>
-                <p class="lead"><i class="fa fa-linkedin"></i><a href="linkedin.com/in/felipe-duo-209651127"> linkedin.com/in/felipe-duo</a></p>
-            </div>
-    
-        </section>
-        
-        <footer class="container">
-            <p class="float-right"><a href="#">Inicio</a></p>
-            <p>© 2020 Felipe Nunis Duo · 
-          </footer>
+      // Cards interactivity (similar to skill-items)
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => card.addEventListener('click', () => {
+        const targetId = card.dataset.target;
+        const targetContent = document.getElementById(targetId);
 
-  </body>
+        if (targetContent) {
+          // Close all other active cards and their contents
+          document.querySelectorAll('.card.active').forEach(c => {
+            if (c !== card) c.classList.remove('active');
+          });
+          document.querySelectorAll('.content.active').forEach(c => {
+            if (c !== targetContent) {
+              c.classList.remove('active');
+              c.style.maxHeight = '0';
+            }
+          });
+
+          // Toggle the clicked card's active state and content
+          card.classList.toggle('active');
+          targetContent.classList.toggle('active');
+
+          if (targetContent.classList.contains('active')) {
+            targetContent.style.maxHeight = targetContent.scrollHeight + 'px';
+          } else {
+            targetContent.style.maxHeight = '0';
+          }
+        }
+      }));
+
+      // Function to close content panels (for the close button)
+      window.closeContent = () => {
+        document.querySelectorAll('.content.active').forEach(c => {
+          c.classList.remove('active');
+          c.style.maxHeight = '0'; // Ensure content collapses
+        });
+        document.querySelectorAll('.card.active').forEach(c => c.classList.remove('active'));
+      };
+
+      // Skills & Timeline expand
+      document.querySelectorAll('.skill-item').forEach(item => {
+        const content = item.querySelector('.skill-content');
+        // Initialize all skill-content to closed state
+        content.style.maxHeight = '0';
+
+        item.addEventListener('click', () => {
+          // Close all other active skill contents
+          document.querySelectorAll('.skill-content.active').forEach(c => {
+            if (c !== content) { // Don't close the current one if it's already active
+              c.classList.remove('active');
+              c.style.maxHeight = '0';
+            }
+          });
+
+          // Toggle the current skill content
+          content.classList.toggle('active');
+          if (content.classList.contains('active')) {
+            content.style.maxHeight = content.scrollHeight + 'px';
+          } else {
+            content.style.maxHeight = '0';
+          }
+        });
+      });
+    });
+  </script>
+</body>
 </html>
