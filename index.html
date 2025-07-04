@@ -46,10 +46,9 @@
     @media (max-width: 768px) { .cards { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); } }
     @media (max-width: 480px) { .cards { grid-template-columns: 1fr; } }
     /* Floating contact buttons */
-    #contact-button, #whatsapp-button, #linkedin-button { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.2); position: fixed; z-index: 100; cursor: pointer; }
-    #contact-button { bottom: 1rem; right: 1rem; background: var(--primary); color: white; }
-    #whatsapp-button { bottom: 1rem; right: 5.5rem; background: #25D366; color: white; }
-    #linkedin-button { bottom: 1rem; right: 10rem; background: #0A66C2; color: white; }
+    #contact-button, #linkedin-button { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.2); position: fixed; z-index: 100; cursor: pointer; bottom: 1rem; }
+    #contact-button { right: 1rem; background: var(--primary); color: white; }
+    #linkedin-button { right: calc(1rem + 48px + 0.5rem); background: #0A66C2; color: white; }
   </style>
 </head>
 <body class="lang-pt">
@@ -58,7 +57,6 @@
     <button id="lang-toggle">EN</button>
   </div>
   <a id="contact-button" href="mailto:felipenunis@yahoo.com.br" title="Email"><i data-feather="mail"></i></a>
-  <a id="whatsapp-button" href="https://wa.me/5511941041657" title="WhatsApp" target="_blank"><i data-feather="message-circle"></i></a>
   <a id="linkedin-button" href="https://www.linkedin.com/in/felipe-duo-%F0%9F%8F%B3%EF%B8%8F%E2%80%8D%F0%9F%8C%88-209651127/" title="LinkedIn" target="_blank"><i data-feather="linkedin"></i></a>
 
   <header>
@@ -110,12 +108,25 @@
       <div class="card" data-target="prd"><i data-feather="alert-triangle"></i><span>PRD</span></div>
       <div class="card" data-target="auditoria"><i data-feather="check-circle"></i><span class="lang-pt">Auditoria & Compliance</span><span class="lang-en">Audit & Compliance</span></div>
     </div>
+
     <div id="governanca" class="content">
       <button class="close-btn" onclick="closeContent()">&times;</button>
       <h3><span class="lang-pt">Documentos & Governança</span><span class="lang-en">Documentation & Governance</span></h3>
       <p>
-        <span class="lang-pt">Criação, revisão e gestão de políticas, procedimentos e guias de governança, assegurando a conformidade com as normas ISO e as melhores práticas do setor.</span>
-        <span class="lang-en">Creation, review, and management of governance policies, procedures, and guidelines, ensuring compliance with ISO standards and industry best practices.</span>
+        <span class="lang-pt">
+          Atuação na criação e gestão de matrizes de responsabilidade <strong>RACI</strong> para definição de ciclos de vida de documentos (criação, revisão, aprovação e publicação).
+          Implementação de controle de acesso segmentado por perfil (negócio, TI, diretoria, auditoria).
+          Desenvolvimento e gestão de documentos chave como <strong>Política de GCN</strong>, <strong>Guia de Continuidade</strong> e <strong>ITR’s</strong>.
+          Gestão documental eficiente via <strong>SharePoint</strong> com controle de versão, essencial para a governança e auditoria (ou ferramenta de <strong>GRC</strong>).
+          Apoio direto às iniciativas de compliance e auditoria.
+        </span>
+        <span class="lang-en">
+          Involved in creating and managing <strong>RACI</strong> matrices for defining document lifecycle (creation, review, approval, and publication).
+          Implemented segmented access control by profile (business, IT, board, audit).
+          Developed and managed key documents such as <strong>BCM Policy</strong>, <strong>Continuity Guide</strong>, and <strong>ITRs</strong>.
+          Ensured efficient document management via <strong>SharePoint</strong> with version control, essential for governance and auditing (or <strong>GRC</strong> tool).
+          Provided direct support to compliance and audit initiatives.
+        </span>
       </p>
     </div>
 
@@ -123,8 +134,76 @@
       <button class="close-btn" onclick="closeContent()">&times;</button>
       <h3>BIA</h3>
       <p>
-        <span class="lang-pt">Condução de Análise de Impacto nos Negócios (BIA) para identificar processos críticos, RTOs e RPOs, fundamentais para a criação de planos de continuidade eficazes.</span>
-        <span class="lang-en">Conducting Business Impact Analysis (BIA) to identify critical processes, RTOs, and RPOs, essential for creating effective continuity plans.</span>
+        <span class="lang-pt">
+          <h4>Planejamento e Cronograma</h4>
+          Elaborei cronograma anual de <strong>BIA</strong>, com priorização baseada no histórico de criticidade organizacional, por Unidade de Negócio (BU) e relatórios do time de Risco Operacional (RO).
+          Estruturei agendas com áreas-chave de negócio e tecnologia para atender ao cronograma anual das BIAs.
+          Utilizei <strong>Kanban (JIRA)</strong> para controle das fases: planejamento, coleta, validação e publicação.
+          Apliquei prazos estipulados nas instruções de trabalho tanto para elaboração, correção e aprovação das BIAs, e realizei a documentação das evidências de cada processo até a conclusão do ciclo.
+
+          <h4>Condução de Entrevistas e Workshops</h4>
+          Realizei contato inicial com as áreas, com alinhamento prévio com os gestores e pontos focais, explicando o objetivo da BIA, a importância estratégica da continuidade de negócios e o papel deles no processo. Apresentei um cronograma com prazos definidos e os entregáveis esperados.
+          Preparei entrevistas personalizadas, utilizando histórico da BIA do ano anterior, estrutura da área, os sistemas utilizados, <strong>SLAs</strong>, e processos previamente documentados. Isso me permite fazer perguntas personalizadas e com contexto, o que gera mais confiança dos participantes.
+
+          <h4>Instrumentos e Metodologia</h4>
+          Metodologia baseada em <strong>ISO 22301</strong> + <strong>COBIT</strong> + <strong>ITIL</strong>.
+          Utilizei planilha estruturada em <strong>Excel</strong> com campos obrigatórios, pré-compilada quando possível com seções específicas: Nome e descrição do processo, BU, Dependências de Sistemas de TI, Pessoas-chave / quantidade mínima para operação, Áreas chave para a execução do processo, Áreas impactadas pela ausência da execução do processo, <strong>RTO</strong> (Recovery Time Objective) – tempo máximo de inatividade tolerável, <strong>RPO</strong> (Recovery Point Objective) – perda máxima de dados tolerável, Ponto mínimo de operação, Questões de <strong>ESG</strong>, Dados de Impacto financeiro em decorrência do tempo de interrupção de cada processo mapeado, e Histórico de interrupção e evidências.
+
+          <h4>Categorização e Criticidade</h4>
+          Classificação dos processos em: Críticos, Alta, Moderados, Baixo.
+          Com Definição de Notas de Impactos em: Imagem/reputação, Regulação/Compliance, Financeiro, Operacional, Sistemas.
+
+          <h4>Entregáveis e Documentação</h4>
+          Documento final validado com gestor e diretoria.
+          Registro em <strong>SharePoint</strong> com controle de versão.
+          Apresentação executiva dos resultados consolidados (em <strong>PPT</strong> + <strong>Power BI</strong>).
+          Inclusão em dossiês de auditoria e governança de continuidade.
+
+          <h4>Ferramentas Utilizadas</h4>
+          <strong>JIRA</strong>, <strong>Excel Avançado</strong>, <strong>Power BI</strong> para visões consolidadas por criticidade, <strong>PowerPoint</strong> para apresentações executivas, <strong>SharePoint</strong> para gestão e rastreamento documental (Posteriormente implementação de software de <strong>GRC</strong>), e <strong>SQL</strong> para consolidação de resultados em grandes volumes (se necessário).
+
+          <h4>Resultados Práticos</h4>
+          Dezenas de processos críticos e não críticos mapeados com precisão.
+          Atendimento de 100% do cronograma estabelecido.
+          Redução de tempo médio de recuperação (<strong>MTTR</strong>) com base nos insights da BIA.
+          Maior visibilidade da alta gestão sobre processos dependentes de TI e pessoas e áreas chaves.
+          Apoio direto à obtenção da certificação <strong>ISO 22301</strong>.
+        </span>
+        <span class="lang-en">
+          <h4>Planning and Scheduling</h4>
+          Developed annual <strong>BIA</strong> schedule, prioritizing based on organizational criticality history, Business Unit (BU), and Operational Risk (OR) team reports.
+          Structured meetings with key business and technology areas to meet the annual BIA schedule.
+          Utilized <strong>Kanban (JIRA)</strong> to control phases: planning, collection, validation, and publication.
+          Adhered to deadlines stipulated in work instructions for BIA development, correction, and approval; documented evidence for each process until cycle completion.
+
+          <h4>Conducting Interviews and Workshops</h4>
+          Initiated contact with departments: Pre-alignment with managers and focal points, explaining BIA's objective, strategic importance of business continuity, and their role. Presented a schedule with defined deadlines and expected deliverables.
+          Prepared customized interviews: Used previous year's BIA history, department structure, systems, <strong>SLAs</strong>, and pre-documented processes for contextual questions, building participant trust.
+
+          <h4>Instruments and Methodology</h4>
+          Methodology based on <strong>ISO 22301</strong> + <strong>COBIT</strong> + <strong>ITIL</strong>.
+          Utilized structured <strong>Excel</strong> spreadsheets with mandatory fields and specific sections: Process name/description, BU, IT System dependencies, Key people/minimum quantity for operation, Key areas for process execution, Areas impacted by process absence, <strong>RTO</strong> (Recovery Time Objective) – maximum tolerable downtime, <strong>RPO</strong> (Recovery Point Objective) – maximum tolerable data loss, Minimum point of operation, <strong>ESG</strong> questions, Financial impact data due to interruption time for each mapped process, and Interruption history and evidence.
+
+          <h4>Categorization and Criticality</h4>
+          Classified processes as: Critical, High, Moderate, Low.
+          Defined Impact Scores for: Image/reputation, Regulation/Compliance, Financial, Operational, Systems.
+
+          <h4>Deliverables and Documentation</h4>
+          Final document validated with manager and board.
+          Recorded in <strong>SharePoint</strong> with version control.
+          Executive presentation of consolidated results in <strong>PPT</strong> and <strong>Power BI</strong>.
+          Included in audit and continuity governance dossiers.
+
+          <h4>Tools Used</h4>
+          <strong>JIRA</strong>, <strong>Advanced Excel</strong>, <strong>Power BI</strong> for consolidated criticality views, <strong>PowerPoint</strong> for executive presentations, <strong>SharePoint</strong> for document management and tracking (with future <strong>GRC</strong> software implementation), and <strong>SQL</strong> for consolidating large volumes of results (if necessary).
+
+          <h4>Practical Results</h4>
+          Dozens of critical and non-critical processes accurately mapped.
+          100% adherence to the established schedule.
+          Reduced Mean Time To Recovery (<strong>MTTR</strong>) based on BIA insights.
+          Increased visibility for senior management on IT-dependent processes and key personnel/areas.
+          Direct support in achieving <strong>ISO 22301</strong> certification.
+        </span>
       </p>
     </div>
 
@@ -132,8 +211,54 @@
       <button class="close-btn" onclick="closeContent()">&times;</button>
       <h3>PCO</h3>
       <p>
-        <span class="lang-pt">Elaboração e manutenção de Planos de Continuidade Operacional (PCO) detalhados, incluindo estratégias de recuperação, equipes e responsabilidades.</span>
-        <span class="lang-en">Developing and maintaining detailed Business Continuity Plans (BCP), including recovery strategies, teams, and responsibilities.</span>
+        <span class="lang-pt">
+          <h4>Estruturação e Gestão Técnica</h4>
+          Iniciamos com insumos da <strong>BIA</strong>: Cada PCO foi construído a partir das informações consolidadas na BIA: criticidade do processo, <strong>RTO/RPO</strong>, sistemas envolvidos, insumos, pessoas mínimas e tolerância à interrupção.
+          Utilizei um modelo padronizado do plano, com base no ciclo <strong>PDCA</strong>, contendo: Nome do processo e responsável, Objetivo do plano, Escopo, Descrição da situação de crise ou cenário de ativação, Papel de cada área envolvida (TI, negócio, suporte, jurídico etc.), Lista de contatos críticos (internos e externos), Passo a passo das ações de resposta, Comunicação (quem aciona quem, por qual canal, em que tempo), Alternativas (sistemas manuais, registros paralelos, processos substitutos), Checklists de recuperação, RTO/RPO definidos e justificados, Plano de retorno à normalidade, e Histórico de testes e atualizações.
+
+          <h4>Ferramentas Utilizadas na Construção</h4>
+          Formulário em <strong>WORD</strong> estruturado com tabelas e parágrafos.
+          <strong>PowerPoint</strong> para apresentações executivas do plano.
+          <strong>SharePoint</strong> como repositório com controle de versão e rastreabilidade (integrado com ferramenta de <strong>GRC</strong>).
+          <strong>JIRA</strong> para gestão das ações de construção e validação entre áreas e métricas de <strong>SLA</strong>.
+
+          <h4>Validação e Revisão</h4>
+          Validação com o dono do processo (aprovação do gestor).
+          Consolidação final e submissão à gestão de continuidade (aprovação de GCN).
+          Aprovação executiva (Diretoria).
+          Revisão anual ou após eventos/crises reais (1 ano).
+
+          <h4>Resultados Concretos</h4>
+          Centenas de PCOs construídos do zero, com rastreabilidade e versionamento completo.
+          100% dos planos testados com validação funcional e atendendo ao cronograma de elaboração e validação.
+          Inclusão dos planos no dossiê de certificação <strong>ISO 22301</strong>.
+          Redução de tempo de resposta em incidentes simulados e reais.
+          Melhoria da governança e confiança da diretoria sobre os planos ativos.
+        </span>
+        <span class="lang-en">
+          <h4>Structuring and Technical Management</h4>
+          Started with <strong>BIA</strong> inputs: Each BCP was built from consolidated BIA information: process criticality, <strong>RTO/RPO</strong>, involved systems, inputs, minimum personnel, and interruption tolerance.
+          Utilized a standardized plan template, based on the <strong>PDCA</strong> cycle, containing: Process name and owner, Plan objective, Scope, Crisis situation/activation scenario description, Role of each involved area (IT, business, support, legal, etc.), List of critical contacts (internal and external), Step-by-step response actions, Communication (who activates whom, via which channel, when), Alternatives (manual systems, parallel records, substitute processes), Recovery checklists, Defined and justified RTO/RPO, Return-to-normal plan, and Test and update history.
+
+          <h4>Tools Used in Construction</h4>
+          Structured <strong>WORD</strong> forms with tables and paragraphs.
+          <strong>PowerPoint</strong> for executive plan presentations.
+          <strong>SharePoint</strong> as a repository with version control and traceability (integrated with <strong>GRC</strong> tool).
+          <strong>JIRA</strong> for managing construction and validation actions between areas and <strong>SLA</strong> metrics.
+
+          <h4>Validation and Review</h4>
+          Validation with the process owner (manager approval).
+          Final consolidation and submission to continuity management (BCM approval).
+          Executive approval (Board of Directors).
+          Annual review or after real events/crises (1 year).
+
+          <h4>Concrete Results</h4>
+          Hundreds of BCPs built from scratch, with complete traceability and versioning.
+          100% of plans tested with functional validation and adherence to the development and validation schedule.
+          Inclusion of plans in the <strong>ISO 22301</strong> certification dossier.
+          Reduced response time in simulated and real incidents.
+          Improved governance and board confidence in active plans.
+        </span>
       </p>
     </div>
 
@@ -141,44 +266,382 @@
       <button class="close-btn" onclick="closeContent()">&times;</button>
       <h3><span class="lang-pt">Testes & DR</span><span class="lang-en">Testing & DR</span></h3>
       <p>
-        <span class="lang-pt">Planejamento e execução de testes de planos de desastre (DR) e continuidade, incluindo testes de mesa e simulações completas para validação da eficácia.</span>
-        <span class="lang-en">Planning and executing disaster recovery (DR) and continuity plan tests, including tabletop exercises and full-scale simulations to validate effectiveness.</span>
+        <span class="lang-pt">
+          <h4>Planejamento e Agenda de Testes</h4>
+          Estruturei agenda anual de testes, com definição de: Tipos de testes (mesa, <strong>DR</strong>), Processos e sistemas críticos envolvidos, Responsáveis técnicos e funcionais, Frequência e objetivos.
+          Priorização dos testes baseada em criticidade (via <strong>BIA</strong>) e exigência de auditorias/certificações.
+
+          <h4>Testes de Mesa (Tabletop)</h4>
+          Testei o conhecimento e maturidade dos profissionais envolvidos nos planos através de simulações teóricas de cenários de crise (ex: falha de sistema, ausência de equipe, ataque cibernético).
+          Promovi a participação de áreas de negócio, TI, Segurança, Facilities, Jurídico e Comunicação (quando necessário).
+          Apliquei questões para avaliar o conhecimento dos pontos focais nos processos de <strong>GCN</strong> e utilizei checklists por participante.
+          Realizei mediação com perguntas situacionais: “E se o sistema não retornar em 4h?” / “Quem acionaria o fornecedor?”.
+
+          <h4>Testes Técnicos de DR (Disaster Recovery)</h4>
+          Executei a recuperação real de sistemas ou ambientes em ambiente controlado previamente definido em escopo e validado com diretorias e áreas envolvidas.
+          Validei: Backup e restauração, Failover de sistemas críticos, Tempo de retomada (comparado ao <strong>RTO</strong>), Integridade de dados (comparado ao <strong>RPO</strong>).
+          Envolvimento ativo da equipe de infraestrutura, cloud, banco de dados e redes (se necessário).
+
+          <h4>Documentação e Evidências</h4>
+          Registro de: Participantes e funções, Ações tomadas e decisões, Conformidade com os <strong>PCOs</strong> e <strong>DRPs</strong> existentes, Pontos fortes, falhas, dúvidas ou gaps de processo.
+          Coleta de evidências visuais (prints, logs, telas, anotações manuais com horário de máquina).
+          Uso de modelo de relatório padronizado com trilha de auditoria.
+
+          <h4>Ações Pós-Teste</h4>
+          Condução de sessão de pós-mortem (lições aprendidas) com todas as áreas.
+          Criação de plano de ação corretiva com prazos, responsáveis e severidade.
+          Integração com sistema de gestão de ações (<strong>JIRA</strong>/ <strong>Excel</strong> / <strong>SharePoint</strong>).
+          Atualização imediata de <strong>PCOs</strong> e <strong>DRPs</strong> conforme necessário.
+
+          <h4>Ferramentas Utilizadas</h4>
+          <strong>Excel</strong> para controle de cronogramas e checklists.
+          <strong>Power BI</strong> para dashboards de maturidade e cobertura de testes.
+          <strong>SharePoint</strong> para repositório de evidências e relatórios (integrado com ferramenta de <strong>GRC</strong>).
+          <strong>JIRA</strong> / <strong>Kanban</strong> para planos de ação pós-testes.
+
+          <h4>Resultados Concretos</h4>
+          100% dos PCOs testados dentro de ciclo de um ano.
+          Alta participação e engajamento nas simulações.
+          Redução do tempo de resposta estimado após melhorias.
+          Evolução contínua da maturidade do SGCN registrada em indicadores.
+        </span>
+        <span class="lang-en">
+          <h4>Planning and Testing Schedule</h4>
+          Structured annual testing schedule, defining: Test types (tabletop, <strong>DR</strong>), Critical processes and systems involved, Technical and functional responsible parties, Frequency and objectives.
+          Prioritized tests based on criticality (via <strong>BIA</strong>) and audit/certification requirements.
+
+          <h4>Tabletop Exercises</h4>
+          Tested the knowledge and maturity of professionals involved in plans through theoretical crisis scenario simulations (e.g., system failure, team absence, cyberattack).
+          Promoted participation from business areas, IT, Security, Facilities, Legal, and Communications (when necessary).
+          Applied questions to assess focal points' knowledge of <strong>BCM</strong> processes and used participant checklists.
+          Facilitated with situational questions: “What if the system doesn't recover in 4 hours?” / “Who would contact the vendor?”.
+
+          <h4>Technical DR Tests (Disaster Recovery)</h4>
+          Executed actual system or environment recovery in a controlled environment previously defined in scope and validated with leadership and involved departments.
+          Validated: Backup and restoration, Critical system failover, Recovery time (compared to <strong>RTO</strong>), Data integrity (compared to <strong>RPO</strong>).
+          Active involvement of infrastructure, cloud, database, and network teams (if necessary).
+
+          <h4>Documentation and Evidence</h4>
+          Recorded: Participants and roles, Actions taken and decisions, Compliance with existing <strong>BCPs</strong> and <strong>DRPs</strong>, Strengths, failures, questions, or process gaps.
+          Collected visual evidence (screenshots, logs, screens, manual notes with machine timestamps).
+          Used a standardized report template with an audit trail.
+
+          <h4>Post-Test Actions</h4>
+          Conducted post-mortem sessions (lessons learned) with all areas.
+          Created corrective action plans with deadlines, responsible parties, and severity.
+          Integrated with action management system (<strong>JIRA</strong> / <strong>Excel</strong> / <strong>SharePoint</strong>).
+          Immediately updated <strong>BCPs</strong> and <strong>DRPs</strong> as needed.
+
+          <h4>Tools Used</h4>
+          <strong>Excel</strong> for schedule and checklist control.
+          <strong>Power BI</strong> for maturity dashboards and test coverage.
+          <strong>SharePoint</strong> for evidence and report repository (integrated with <strong>GRC</strong> tool).
+          <strong>JIRA</strong> / <strong>Kanban</strong> for post-test action plans.
+
+          <h4>Concrete Results</h4>
+          100% of BCPs tested within a one-year cycle.
+          High participation and engagement in simulations.
+          Reduced estimated response time after improvements.
+          Continuous evolution of BCMS maturity recorded in indicators.
+        </span>
       </p>
     </div>
 
     <div id="relatorios" class="content">
       <button class="close-btn" onclick="closeContent()">&times;</button>
-      <h3><span class="lang-pt">Relatórios</span><span class="lang-en">Reports</span></h3>
+      <h3><span class="lang-pt">Relatórios & Indicadores</span><span class="lang-en">Reports & Indicators</span></h3>
       <p>
-        <span class="lang-pt">Criação de relatórios e dashboards em Power BI e Excel para monitoramento de KPIs, status de projetos e apresentação de resultados de GCN.</span>
-        <span class="lang-en">Creating reports and dashboards in Power BI and Excel for KPI monitoring, project status, and presentation of BCM results.</span>
+        <span class="lang-pt">
+          <h4>Relatórios e Indicadores</h4>
+          Elaborei relatórios executivos de <strong>BIA</strong> e <strong>PCO</strong> por processo, sumários de testes de mesa e <strong>DR</strong> (com lições aprendidas e plano de ação), e dossiês de continuidade para auditorias e comitês.
+          Desenvolvi apresentações para comitê de crise ou diretoria, e criei indicadores estratégicos de <strong>GCN</strong>, integrados em dashboards visuais.
+
+          <h4>Estrutura dos Relatórios</h4>
+          Todos os relatórios incluem um resumo executivo, objetivo do relatório, status geral da continuidade, principais riscos mapeados ou eventos testados.
+          Detalhamento técnico por seção, com: Status de BIAs realizadas (áreas, datas, criticidade), PCOs criados/validados/testados, Riscos prioritários, Status de testes (realizados, pendentes, reprovados), Matriz de riscos e impactos.
+          Utilizei indicadores gráficos em <strong>Power BI</strong> para visualização de: % de planos testados vs. planejados, % de planos aprovados vs. em revisão, % de áreas capacitadas, Evolução do <strong>RTO</strong> médio, Cobertura por tipo de incidente.
+
+          <h4>Ferramentas e Automações</h4>
+          <strong>Power BI</strong> conectado ao <strong>SharePoint</strong> e <strong>Excel</strong> para visões dinâmicas.
+          <strong>Excel</strong> estruturado com tabelas e gráficos.
+          <strong>PowerPoint</strong> para apresentações executivas.
+          Utilização do <strong>Power Automate</strong> para envio automático de alertas e status por e-mail.
+
+          <h4>Auditoria e Compliance</h4>
+          Relatórios formatados com versão, aprovador, data e rastreabilidade.
+          Disponibilização em biblioteca específica no <strong>SharePoint</strong>, com controle de acesso (integrado com ferramenta de <strong>GRC</strong>).
+          Suporte direto a auditorias <strong>ISO 22301</strong> e <strong>QMS</strong> (com trilha completa das ações).
+          Organização por pastas: BIA / PCO / Testes / Planos de Ação / Relatórios executivos.
+
+          <h4>Resultados e Diferenciais</h4>
+          Entregas com linguagem técnica para a TI e acessível para a alta gestão.
+          Aumento da confiança da liderança nas ações de <strong>GCN</strong>.
+          Eficiência no tempo de decisão durante crises com base em relatórios atualizados.
+          Modelo de relatórios reutilizável e auditável, facilitando compliance.
+        </span>
+        <span class="lang-en">
+          <h4>Reports and Indicators</h4>
+          Prepared executive <strong>BIA</strong> and <strong>BCP</strong> reports by process, tabletop and <strong>DR</strong> test summaries (with lessons learned and action plans), and continuity dossiers for audits and committees.
+          Developed presentations for crisis committees or the board, and created strategic <strong>BCM</strong> indicators, integrated into visual dashboards.
+
+          <h4>Report Structure</h4>
+          All reports include an executive summary, report objective, overall continuity status, main mapped risks or tested events.
+          Detailed technical breakdown by section, with: Status of completed BIAs (areas, dates, criticality), BCPs created/validated/tested, Priority risks, Test status (completed, pending, failed), Risk and impact matrix.
+          Utilized graphical indicators in <strong>Power BI</strong> for visualization of: % of plans tested vs. planned, % of plans approved vs. under review, % of trained areas, Average <strong>RTO</strong> evolution, Coverage by incident type.
+
+          <h4>Tools and Automations</h4>
+          <strong>Power BI</strong> connected to <strong>SharePoint</strong> and <strong>Excel</strong> for dynamic views.
+          Structured <strong>Excel</strong> with tables and charts.
+          <strong>PowerPoint</strong> for executive presentations.
+          Used <strong>Power Automate</strong> for automated email alerts and status updates.
+
+          <h4>Audit and Compliance</h4>
+          Reports formatted with version, approver, date, and traceability.
+          Available in a specific <strong>SharePoint</strong> library, with access control (integrated with <strong>GRC</strong> tool).
+          Direct support for <strong>ISO 22301</strong> and <strong>QMS</strong> audits (with full action trail).
+          Organized by folders: BIA / BCP / Tests / Action Plans / Executive Reports.
+
+          <h4>Results and Differentiators</h4>
+          Deliverables with technical language for IT and accessible language for senior management.
+          Increased leadership confidence in <strong>BCM</strong> actions.
+          Efficiency in decision-making during crises based on updated reports.
+          Reusable and auditable report model, facilitating compliance.
+        </span>
       </p>
     </div>
 
     <div id="treinamentos" class="content">
       <button class="close-btn" onclick="closeContent()">&times;</button>
-      <h3><span class="lang-pt">Treinamentos</span><span class="lang-en">Training</span></h3>
+      <h3><span class="lang-pt">Treinamentos & Cultura de Continuidade</span><span class="lang-en">Training & Continuity Culture</span></h3>
       <p>
-        <span class="lang-pt">Desenvolvimento e aplicação de treinamentos para conscientização sobre continuidade de negócios e segurança da informação para equipes e stakeholders.</span>
-        <span class="lang-en">Developing and delivering training sessions to raise awareness about business continuity and information security for teams and stakeholders.</span>
+        <span class="lang-pt">
+          <h4>Planejamento de Treinamentos</h4>
+          Criei plano anual de capacitação em <strong>GCN</strong>, segmentado por: Temas de Continuidade, Instruções de Trabalho, Tipos de plano (PCO, DRP, resposta a crises).
+          Mapeamento de necessidades de treinamento com base nos gaps identificados nas <strong>BIAs</strong>, testes e crises reais.
+
+          <h4>Desenvolvimento de Conteúdo</h4>
+          Desenvolvi conteúdo do zero, com foco em: Conceitos-chave de continuidade (<strong>RTO, RPO</strong>, impactos, cadeia crítica), Simulações reais, Procedimentos de ativação de planos, Responsabilidades durante crises (quem aciona, como, quando).
+          Adaptei a linguagem para cada público: Operacional (foco em execução clara e rápida), Diretoria (impacto, estratégia, tomada de decisão), TI (integração entre contingência e tecnologia).
+
+          <h4>Ferramentas e Formatos Utilizados</h4>
+          Utilização de narração com <strong>IA</strong> (voz humanizada).
+          Criação de vídeos com animação explicativa e storytelling real.
+          Aplicação de <strong>Quiz</strong> interativo com validação de aprendizagem.
+          <strong>Power BI</strong> para acompanhamento de adesão e performance.
+          <strong>SharePoint</strong> para hospedagem das trilhas e controle de acesso.
+
+          <h4>Monitoramento de Engajamento</h4>
+          Apliquei indicadores como: % de adesão por área e por plano, Média de acertos nos quizzes, Tempo de conclusão do treinamento, Feedback qualitativo dos usuários.
+          Uso de dashboards em tempo real para rastrear e reportar adesão à alta liderança e repescagem.
+
+          <h4>Comunicação e Cultura</h4>
+          Criei campanhas internas como “GCN na prática” e “Você saberia o que fazer em uma crise?”.
+          Participação ativa em <strong>SIPATs</strong> e eventos internos.
+          Inclusão de <strong>GCN</strong> nas trilhas de onboarding.
+
+          <h4>Resultados Concretos (Incluindo LGPD)</h4>
+          Mais de 90% de adesão nas áreas focais de GCN.
+          100% de aproveitamento nos treinamentos obrigatórios.
+          Aumento da autonomia das áreas na resposta a incidentes.
+          Redução do improviso durante testes e crises simulados.
+          Aumento da conscientização sobre a importância da <strong>LGPD</strong> dentro dos contextos de continuidade e resposta a incidentes.
+
+          <h4>Diferenciais da Minha Atuação</h4>
+          Capacidade de traduzir GCN técnico para linguagem acessível, transformando normas em conhecimento prático para as pessoas.
+          Abordagem moderna, didática e automatizada.
+          Integração dos treinamentos com a estratégia de engajamento organizacional.
+        </span>
+        <span class="lang-en">
+          <h4>Training Planning</h4>
+          Created an annual <strong>BCM</strong> training plan, segmented by: Continuity Topics, Work Instructions, Plan types (BCP, DRP, crisis response).
+          Mapped training needs based on gaps identified in <strong>BIAs</strong>, tests, and real crises.
+
+          <h4>Content Development</h4>
+          Developed content from scratch, focusing on: Key continuity concepts (<strong>RTO, RPO</strong>, impacts, critical chain), Real simulations, Plan activation procedures, Responsibilities during crises (who activates, how, when).
+          Adapted language for each audience: Operational (focus on clear and fast execution), Board (impact, strategy, decision-making), IT (contingency and technology integration).
+
+          <h4>Tools and Formats Used</h4>
+          Used <strong>AI</strong> narration (humanized voice).
+          Created animated videos with explanatory storytelling.
+          Applied interactive <strong>Quizzes</strong> with learning validation.
+          <strong>Power BI</strong> for tracking engagement and performance.
+          <strong>SharePoint</strong> for hosting training paths and access control.
+
+          <h4>Engagement Monitoring</h4>
+          Applied indicators such as: % of adherence by area and by plan, Average quiz scores, Training completion time, Qualitative user feedback.
+          Used real-time dashboards to track and report adherence to senior leadership and for retakes.
+
+          <h4>Communication and Culture</h4>
+          Created internal campaigns like “BCM in Practice” and “Would you know what to do in a crisis?”.
+          Actively participated in <strong>SIPATs</strong> (Internal Week for Accident Prevention at Work) and internal events.
+          Included <strong>BCM</strong> in onboarding trails.
+
+          <h4>Concrete Results (Including LGPD)</h4>
+          +90% adherence in core BCM areas.
+          100% completion rate for mandatory training.
+          Increased departmental autonomy in incident response.
+          Reduced improvisation during simulated tests and crises.
+          Increased awareness of <strong>LGPD</strong> importance within continuity and incident response contexts.
+
+          <h4>Differentiators of My Work</h4>
+          Ability to translate technical BCM into accessible language, transforming standards into practical knowledge for people.
+          Modern, didactic, and automated approach.
+          Integration of training with organizational engagement strategy.
+        </span>
       </p>
     </div>
 
     <div id="facilities" class="content">
       <button class="close-btn" onclick="closeContent()">&times;</button>
-      <h3>Facilities</h3>
+      <h3><span class="lang-pt">Facilities, Infraestrutura Crítica e Desastres Físicos</span><span class="lang-en">Facilities, Critical Infrastructure & Physical Disasters</span></h3>
       <p>
-        <span class="lang-pt">Experiência na gestão de instalações e infraestrutura para garantir ambientes seguros e resilientes para as operações de negócios.</span>
-        <span class="lang-en">Experience in facility and infrastructure management to ensure secure and resilient environments for business operations.</span>
+        <span class="lang-pt">
+          <h4>Alinhamento com Facilities e Engenharia</h4>
+          Solicitação de mapeamento de infraestruturas críticas: <strong>Geradores, nobreaks, sistemas de climatização, bombas de água, Sistemas de energia, TI física, oxigênio e elevadores</strong> (em ambiente hospitalar, seriam gases medicinais, UPS etc.).
+          Alinhamento entre planos de contingência e procedimentos operacionais físicos.
+          Apoio à identificação de pontos de falha únicos (<strong>SPOFs</strong>) e rotas alternativas.
+
+          <h4>Apoio a Planos de Emergência e Simulados</h4>
+          Suporte na criação e revisão dos planos de evacuação, incêndio e desastres naturais.
+          Acompanhamento de simulados práticos com evacuação parcial de prédio, rotas de fuga e acionamento de brigadas.
+          Condução de testes integrados entre tecnologia, segurança e engenharia predial.
+
+          <h4>Preparação para Eventos de Força Maior</h4>
+          Elaboração de planos corporativos para resposta a: <strong>Enchentes, alagamentos, vendavais, Falha de abastecimento de água e energia, Acesso físico bloqueado</strong> (protestos, pandemias, greves).
+          Definição de rotas alternativas, apoio remoto e mobilização de equipes essenciais.
+
+          <h4>Integração com Planos de Contingência (PCO/DR)</h4>
+          Inclusão das rotas de fuga, planos de evacuação e ativos físicos essenciais nos <strong>PCOs</strong>.
+          Apoio à validação técnica das condições do local para ativação do plano (ex: local backup tem refrigeração, gerador, acesso seguro?).
+          Alinhamento entre responsável do processo e responsável técnico de infraestrutura em cenários críticos.
+
+          <h4>Contatos de Emergência e Fornecedores Críticos</h4>
+          Estruturação de cadastro de contatos de emergência: <strong>Facilities, manutenção, segurança patrimonial, fornecedores</strong>.
+          Definição de canal de acionamento, horário de atendimento, <strong>SLA</strong> acordado.
+          Inclusão no plano e nos fluxos de ativação; Testes de acionamento e atualização periódica.
+
+          <h4>Ferramentas Utilizadas</h4>
+          Matriz de infraestrutura crítica mapeada em <strong>Excel</strong> / <strong>SharePoint</strong>.
+          Fluxogramas visuais de evacuação e contenção.
+          Integração com Painel de <strong>GCN</strong> em <strong>Power BI</strong>.
+          Checklist digital para avaliação de prontidão da estrutura.
+
+          <h4>Resultados e Diferenciais</h4>
+          Planos de continuidade com visão completa: processo, sistema, pessoas e espaço físico.
+          Engajamento real das áreas de Facilities como parte estratégica da continuidade.
+          Respostas mais eficazes a incidentes físicos e ambientais.
+          Atendimento a requisitos de auditorias normativas, <strong>ISO 22301</strong> e segurança patrimonial.
+        </span>
+        <span class="lang-en">
+          <h4>Alignment with Facilities and Engineering</h4>
+          Requested mapping of critical infrastructures: <strong>Generators, UPS, HVAC systems, water pumps, Power systems, physical IT, oxygen and elevators</strong> (in a hospital environment, this would include medical gases, UPS, etc.).
+          Alignment between contingency plans and physical operational procedures.
+          Supported the identification of Single Points of Failure (<strong>SPOFs</strong>) and alternative routes.
+
+          <h4>Support for Emergency Plans and Drills</h4>
+          Supported the creation and revision of evacuation, fire, and natural disaster plans.
+          Monitored practical drills with partial building evacuation, escape routes, and brigade activation.
+          Conducted integrated tests between technology, security, and building engineering.
+
+          <h4>Preparation for Force Majeure Events</h4>
+          Developed corporate response plans for: <strong>Floods, deluges, gales, Power and water supply failures, Blocked physical access</strong> (protests, pandemics, strikes).
+          Defined alternative routes, remote support, and mobilization of essential teams.
+
+          <h4>Integration with Contingency Plans (BCP/DR)</h4>
+          Included escape routes, evacuation plans, and essential physical assets in <strong>BCPs</strong>.
+          Supported technical validation of site conditions for plan activation (e.g., does backup site have cooling, generator, secure access?).
+          Aligned process owner with infrastructure technical owner in critical scenarios.
+
+          <h4>Emergency Contacts and Critical Suppliers</h4>
+          Structured emergency contact registration: <strong>Facilities, maintenance, patrimonial security, suppliers</strong>.
+          Defined activation channel, service hours, agreed <strong>SLA</strong>.
+          Included in the plan and activation flows; activation tests and periodic updates.
+
+          <h4>Tools Used</h4>
+          Critical infrastructure matrix mapped in <strong>Excel</strong> / <strong>SharePoint</strong>.
+          Fluxogramas visuais de evacuação e contenção.
+          Integration with <strong>BCM Dashboard</strong> in <strong>Power BI</strong>.
+          Digital checklist for evaluating structure readiness.
+
+          <h4>Results and Differentiators</h4>
+          Continuity plans with a comprehensive view: process, system, people, and physical space.
+          Genuine engagement of Facilities areas as a strategic part of continuity.
+          More effective responses to physical and environmental incidents.
+          Compliance with normative audit requirements, <strong>ISO 22301</strong>, and patrimonial security.
+        </span>
       </p>
     </div>
 
     <div id="prd" class="content">
       <button class="close-btn" onclick="closeContent()">&times;</button>
-      <h3>PRD</h3>
+      <h3><span class="lang-pt">PRD – Plano de Recuperação de Desastres</span><span class="lang-en">DRP – Disaster Recovery Plan</span></h3>
       <p>
-        <span class="lang-pt">Suporte na definição de Requisitos de Recuperação de Processos (PRD) para sistemas e aplicações críticas.</span>
-        <span class="lang-en">Support in defining Process Recovery Requirements (PRD) for critical systems and applications.</span>
+        <span class="lang-pt">
+          <h4>Estruturação do PRD – Etapas Executadas</h4>
+          Consolidei os principais cenários de desastre com base na <strong>BIA</strong>, matriz de risco e histórico da organização: <strong>Falha em datacenter</strong> (on-premises e cloud), <strong>Incêndio, enchente, desabamento, Sequestro de dados (ransomware) e ataque cibernético, Pandemia, ausência em massa de colaboradores, Falha prolongada de energia, protestos, eventos extremos</strong>.
+          Mapeamento das áreas críticas envolvidas: <strong>TI / Segurança da Informação, Facilities e Engenharia, Jurídico, RH, Comunicação, Diretoria executiva</strong> (decisão e mobilização).
+
+          <h4>Componentes Técnicos do PRD</h4>
+          <strong>Governança do plano:</strong> Definição de quem pode ativar, como é feita a escalada de decisão, e qual o tempo de resposta máximo por severidade.
+          <strong>Fluxo de ativação documentado:</strong> Gatilhos para ativação, Responsáveis e suas ações imediatas, Caminhos de comunicação (quem aciona quem, e como).
+          <strong>Matriz de severidade:</strong> Classificação do impacto (Operacional, Imagem, Regulatória, Financeira, Humana) e Níveis de resposta e comitês ativados conforme gravidade.
+          <strong>Plano de mobilização:</strong> Local alternativo / estrutura remota, Apoio ao transporte, segurança e infraestrutura mínima, Apoio à equipe crítica (notebook, acesso VPN, energia).
+          <strong>Checklist de recursos essenciais:</strong> TI (sistemas, conectividade, backups, login), Facilities (acesso, energia, clima, segurança), Pessoas (contatos críticos, escalas, substituição).
+
+          <h4>Ferramentas e Formatos Utilizados</h4>
+          Modelos de <strong>PRD</strong> em <strong>Word</strong> com sumário técnico e versão executiva.
+          Fluxogramas visuais (<strong>Visio</strong> / <strong>PowerPoint</strong>) de ativação e resposta.
+          Base de contatos crítica em <strong>Excel</strong> + <strong>SharePoint</strong> com revisão trimestral.
+          Integração com o <strong>Power BI</strong> para status e planos relacionados.
+
+          <h4>Entregáveis e Aplicação Prática</h4>
+          <strong>PRD</strong> central que referencia: <strong>DRP</strong> técnico por sistema, <strong>PCOs</strong> de processos de negócio, Planos de comunicação de crise, Planos de emergência predial (evacuação, rotas de fuga, incêndio).
+          Distribuído em versão simplificada para: Diretoria, Comitê de crise, Responsáveis de ativação.
+
+          <h4>Governança e Atualização</h4>
+          Repositório em <strong>SharePoint</strong> com controle de versão (integrado com ferramenta de <strong>GRC</strong>).
+          Validação anual ou após cada crise/teste relevante.
+          <strong>PRD</strong> auditado e referenciado na certificação <strong>ISO 22301</strong>.
+
+          <h4>Resultados e Diferenciais da Minha Atuação</h4>
+          Construção de um <strong>PRD</strong> realista, aplicável e integrado.
+          Redução de tempo de resposta em simulações.
+          Melhoria na comunicação entre áreas em incidentes reais.
+          Engajamento do comitê de crise e confiança na estrutura de resposta.
+        </span>
+        <span class="lang-en">
+          <h4>DRP Structuring – Executed Steps</h4>
+          Consolidated key disaster scenarios based on <strong>BIA</strong>, risk matrix, and organizational history: <strong>Datacenter failure</strong> (on-premises and cloud), <strong>Fire, flood, collapse, Data kidnapping (ransomware) and cyberattack, Pandemic, mass employee absence, Prolonged power failure, protests, extreme events</strong>.
+          Mapped critical areas involved: <strong>IT / Information Security, Facilities and Engineering, Jurídico, RH, Comunicação, Executive Board</strong> (decision and mobilization).
+
+          <h4>Technical Components of the DRP</h4>
+          <strong>Plan Governance:</strong> Defined who can activate, how escalation of decision is made, and maximum response time by severity.
+          <strong>Activation Flow Documented:</strong> Triggers for activation, Responsible parties and their immediate actions, Communication paths (who activates whom, and how).
+          <strong>Severity Matrix:</strong> Impact classification (Operational, Image, Regulatory, Financial, Human) and Response levels and committees activated according to severity.
+          <strong>Mobilization Plan:</strong> Alternative location / remote structure, Support for transportation, security, and minimum infrastructure, Support for critical team (laptop, VPN access, power).
+          <strong>Essential Resource Checklist:</strong> IT (systems, connectivity, backups, login), Facilities (access, energy, climate, security), People (critical contacts, schedules, substitution).
+
+          <h4>Tools and Formats Used</h4>
+          <strong>DRP</strong> templates in <strong>Word</strong> with technical summary and executive version.
+          Visual flowcharts (<strong>Visio</strong> / <strong>PowerPoint</strong>) for activation and response.
+          Critical contact database in <strong>Excel</strong> + <strong>SharePoint</strong> with quarterly review.
+          Integration with <strong>Power BI</strong> for status and related plans.
+
+          <h4>Deliverables and Practical Application</h4>
+          Central <strong>DRP</strong> referencing: <strong>DRP</strong> technical per system, <strong>PCOs</strong> of business processes, Crisis communication plans, Building emergency plans (evacuation, escape routes, fire).
+          Distributed in simplified version to: Board, Crisis committee, Activation responsible parties.
+
+          <h4>Governance and Updates</h4>
+          Repository in <strong>SharePoint</strong> with version control (integrated with <strong>GRC</strong> tool).
+          Annual validation or after each relevant crisis/test.
+          <strong>DRP</strong> audited and referenced in <strong>ISO 22301</strong> certification.
+
+          <h4>Results and Differentiators of My Work</h4>
+          Construction of a realistic, applicable, and integrated <strong>DRP</strong>.
+          Reduced response time in simulations.
+          Improved communication between areas in real incidents.
+          Engagement of the crisis committee and confidence in the response structure.
+        </span>
       </p>
     </div>
 
@@ -186,10 +649,15 @@
       <button class="close-btn" onclick="closeContent()">&times;</button>
       <h3><span class="lang-pt">Auditoria & Compliance</span><span class="lang-en">Audit & Compliance</span></h3>
       <p>
-        <span class="lang-pt">Participação em auditorias internas e externas, garantindo a conformidade com requisitos regulatórios e certificações como ISO 22301.</span>
-        <span class="lang-en">Participation in internal and external audits, ensuring compliance with regulatory requirements and certifications like ISO 22301.</span>
+        <span class="lang-pt">
+          Atuação e suporte em <strong>auditorias internas e externas</strong>, garantindo a <strong>conformidade</strong> com requisitos regulatórios e certificações. Minha experiência inclui a preparação de <strong>dossiês completos</strong> e <strong>evidências rastreáveis</strong> para processos de certificação como <strong>ISO 22301</strong> e outras normas de <strong>Gestão da Qualidade e Segurança da Informação</strong>. Mantenho a <strong>comunicação fluida</strong> com auditores e equipes internas para assegurar a <strong>transparência</strong> e a <strong>eficácia</strong> dos processos de compliance.
+        </span>
+        <span class="lang-en">
+          Support and active participation in <strong>internal and external audits</strong>, ensuring <strong>compliance</strong> with regulatory requirements and certifications. My experience includes preparing <strong>comprehensive dossiers</strong> and <strong>traceable evidence</strong> for certification processes such as <strong>ISO 22301</strong> and other <strong>Quality and Information Security Management</strong> standards. I maintain <strong>fluid communication</strong> with auditors and internal teams to ensure the <strong>transparency</strong> and <strong>effectiveness</strong> of compliance processes.
+        </span>
       </p>
     </div>
+
   </section>
 
   <section id="skills">
@@ -207,22 +675,52 @@
   <section id="timeline-list">
     <h2><span class="lang-pt">Linha do Tempo</span><span class="lang-en">Experience</span></h2>
     <ul class="skills-list">
-      <li class="skill-item">2022 – 2024: <span class="lang-pt">Analista de Segurança da Informação – PagBank</span><span class="lang-en">Information Security Analyst – PagBank</span>
+      <li class="skill-item">2022 – 2024: <span class="lang-pt">Analista de Continuidade de Negócios – PagBank</span><span class="lang-en">Business Continuity Analyst – PagBank</span>
         <div class="skill-content">
-          <span class="lang-pt">Condução de BIAs, desenvolvimento de PCOs/DRPs, implementação de SGCN alinhado à ISO 22301 e dashboards em Power BI.</span>
-          <span class="lang-en">Led BIAs, developed BCP/DR plans, implemented BCP system aligned with ISO 22301 and Power BI dashboards.</span>
+          <span class="lang-pt">Durante meu período no PagBank como Analista de Continuidade de Negócios, tive a oportunidade de atuar diretamente na sustentação da continuidade de negócios em um ambiente crítico, dinâmico e regulado. Apoiei dezenas de análises de impacto ao negócio (BIA), colaborando com áreas-chave para identificar processos sensíveis, definir prioridades de recuperação e alinhar expectativas com as reais capacidades da organização.
+            <br><br>
+            Participei da elaboração e atualização de centenas de Planos de Continuidade Operacional (PCO), buscando garantir que os objetivos mínimos de continuidade fossem não apenas definidos, mas de fato aplicáveis em cenários reais. A partir desse trabalho, apoiei iniciativas que resultaram na redução do tempo de recuperação (RTO) de serviços essenciais — fundamentais para a conformidade com SLAs e exigências regulatórias.
+            <br><br>
+            Também estive envolvido no desenvolvimento de dashboards e relatórios em <strong>Power BI</strong>, voltados para comitês de segurança e continuidade, transformando dados operacionais em informações estratégicas para tomada de decisão. Trabalhei próximo à liderança na implantação do Sistema de Gestão de Continuidade de Negócios (SGCN) e atuei ativamente nas auditorias internas e externas vinculadas à norma <strong>ISO 22301</strong>.
+            <br><br>
+            Com orgulho, contribuí para que a empresa obtivesse a certificação <strong>ISO 22301</strong> no escopo de pagamento presencial e adquirência, apoiando na integração dos requisitos normativos aos processos operacionais. Além disso, participei da organização e execução de diversos testes de mesa e simulações de desastre (DR), promovendo a avaliação prática da maturidade dos planos e da prontidão das equipes envolvidas.
+            <br><br>
+            Ministrei dezenas de treinamentos, produzi materiais de comunicação e acompanhei ambientes críticos em nuvem (<strong>AWS</strong> e <strong>Azure</strong>), com foco na integridade dos serviços em produção (PRD) e no cumprimento dos parâmetros definidos de RTO e RPO.
+          </span>
+          <span class="lang-en">During my tenure at PagBank as a Business Continuity Analyst, I had the opportunity to directly support business continuity in a critical, dynamic, and regulated environment. I assisted in dozens of Business Impact Analyses (BIA), collaborating with key areas to identify sensitive processes, define recovery priorities, and align expectations with the organization's actual capabilities.
+            <br><br>
+            I participated in the development and updating of hundreds of Business Continuity Plans (BCP), aiming to ensure that minimum continuity objectives were not only defined but also practically applicable in real scenarios. This work supported initiatives that resulted in the reduction of Recovery Time Objectives (RTO) for essential services — crucial for compliance with SLAs and regulatory requirements.
+            <br><br>
+            I was also involved in developing <strong>Power BI</strong> dashboards and reports for security and continuity committees, transforming operational data into strategic information for decision-making. I worked closely with leadership on the implementation of the Business Continuity Management System (BCMS) and actively participated in internal and external audits related to the <strong>ISO 22301</strong> standard.
+            <br><br>
+            I proudly contributed to the company's achievement of <strong>ISO 22301</strong> certification for in-person payment and acquiring scope, supporting the integration of normative requirements into operational processes. Additionally, I participated in the organization and execution of various tabletop exercises and disaster recovery (DR) simulations, promoting the practical evaluation of plan maturity and team readiness.
+            <br><br>
+            I conducted dozens of training sessions, produced communication materials, and monitored critical cloud environments (<strong>AWS</strong> and <strong>Azure</strong>), focusing on the integrity of production services (PRD) and adherence to defined RTO and RPO parameters.
+          </span>
         </div>
       </li>
-      <li class="skill-item">2021 – 2022: <span class="lang-pt">Estagiário – PagBank</span><span class="lang-en">Intern – PagBank</span>
+      <li class="skill-item">2021 – 2022: <span class="lang-pt">Estagiário de Continuidade de Negócios – PagBank</span><span class="lang-en">Business Continuity Intern – PagBank</span>
         <div class="skill-content">
-          <span class="lang-pt">Apoio em BIAs e PCOs, desenvolvimento de treinamentos e suporte em auditorias internas.</span>
-          <span class="lang-en">Supported BIAs and BCPs, developed trainings and assisted internal audits.</span>
+          <span class="lang-pt">Como Estagiário de Continuidade de Negócios, prestei apoio na elaboração das Análises de Impacto de Negócios (BIA) e no desenvolvimento de Planos de Continuidade Operacional (PCO). Trabalhei em estreita colaboração com as equipes de tecnologia e negócios, contribuindo para a identificação de processos críticos e estratégias de recuperação.
+            <br><br>
+            Minha atuação incluiu o auxílio na coleta e análise de dados, apoio na construção de relatórios e na comunicação de resultados entre as áreas envolvidas. Também colaborei na implementação de ações voltadas para a melhoria da resiliência organizacional e na documentação dos processos de continuidade.
+          </span>
+          <span class="lang-en">As a Business Continuity Intern, I supported the development of Business Impact Analyses (BIA) and the creation of Business Continuity Plans (BCP). I worked closely with technology and business teams, contributing to the identification of critical processes and recovery strategies.
+            <br><br>
+            My role included assisting with data collection and analysis, supporting report generation, and facilitating communication of results among involved departments. I also collaborated on implementing actions aimed at improving organizational resilience and documenting continuity processes.
+          </span>
         </div>
       </li>
-      <li class="skill-item">2020 – 2021: <span class="lang-pt">Estagiário – JetSoft Tecnologia</span><span class="lang-en">Intern – JetSoft Technology</span>
+      <li class="skill-item">2020 – 2021: <span class="lang-pt">Estagiário de Desenvolvimento de Software – JetSoft Tecnologia</span><span class="lang-en">Software Development Intern – JetSoft Tecnologia</span>
         <div class="skill-content">
-          <span class="lang-pt">Desenvolvimento de aplicações em GeneXus, metodologias ágeis e suporte técnico.</span>
-          <span class="lang-en">Developed GeneXus applications, agile methodology, and technical support.</span>
+          <span class="lang-pt">Como Estagiário de Desenvolvimento de Software, desenvolvi aplicações utilizando a plataforma <strong>Genexus</strong>, aplicando metodologias ágeis como <strong>Scrum</strong> e <strong>Kanban</strong> para garantir a entrega contínua e eficiente de soluções, sempre alinhadas às necessidades do cliente.
+            <br><br>
+            Participei da gestão de projetos, utilizando ferramentas como <strong>Kanban</strong>, <strong>PDCA</strong> e <strong>5W2H</strong> para auxiliar no planejamento, execução e acompanhamento de projetos de TI, contribuindo para a organização e eficiência dos processos. Também atuei no suporte técnico (helpdesk), oferecendo assistência aos usuários e resolvendo problemas técnicos de forma ágil e eficaz.
+          </span>
+          <span class="lang-en">As a Software Development Intern, I developed applications using the <strong>Genexus</strong> platform, applying agile methodologies such as <strong>Scrum</strong> and <strong>Kanban</strong> to ensure continuous and efficient delivery of solutions, always aligned with client needs.
+            <br><br>
+            I participated in project management, utilizing tools like <strong>Kanban</strong>, <strong>PDCA</strong>, and <strong>5W2H</strong> to assist in the planning, execution, and monitoring of IT projects, contributing to process organization and efficiency. I also provided technical support (helpdesk), offering assistance to users and resolving technical issues quickly and effectively.
+          </span>
         </div>
       </li>
     </ul>
