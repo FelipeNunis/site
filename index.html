@@ -23,8 +23,28 @@
     header h1 { margin: 0; font-size: 2.5rem; }
     header p { margin: 0.5rem 0 0; font-size: 1rem; }
     /* Sections */
-    section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-    #about p { background: var(--neutral-dark); padding: 1rem; border-radius: 8px; line-height: 1.6; }
+    section {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+
+    #about p {
+        /* REMOVA ESTAS PROPRIEDADES: */
+        /* background: var(--neutral-dark); */
+        /* padding: 1rem; */
+        /* border-radius: 8px; */
+        line-height: 1.6;
+        /* Adicionado para espaçamento entre os parágrafos, já que você usava <br><br> */
+        margin-bottom: 1em; /* Adiciona espaçamento entre parágrafos, ajuste se necessário */
+    }
+
+    /* Opcional: Se você quer que a seção inteira tenha um fundo, adicione aqui */
+    #about {
+        background: var(--neutral-dark); /* Ex: aplicar no #about se quiser o fundo cinza claro para toda a seção */
+        padding: 1rem; /* Adicionar padding aqui se mover de #about p */
+        border-radius: 8px; /* Adicionar border-radius aqui se mover de #about p */
+    }
     /* Cards */
     .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 1rem; margin-top: 1rem; }
     .cards.hide-others .card:not(.active) { display: none; }
@@ -49,6 +69,29 @@
     #contact-button, #linkedin-button { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.2); position: fixed; z-index: 100; cursor: pointer; bottom: 1rem; }
     #contact-button { right: 1rem; background: var(--primary); color: white; }
     #linkedin-button { right: calc(1rem + 48px + 0.5rem); background: #0A66C2; color: white; }
+    /* Ajustes para o botão "Leia Mais" */
+    .read-more-btn {
+        background-color: var(--primary); /* Usando sua variável primary color, que é #334155 */
+        color: white; /* Cor do texto no botão */
+        border: none;
+        padding: 10px 15px;
+        margin-top: 15px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 1em;
+        transition: background-color 0.3s ease;
+        /* Adicionado para alinhamento */
+        display: block; /* Garante que o botão ocupe sua própria linha */
+        margin-left: auto; /* Centraliza o botão dentro do seu contêiner pai */
+        margin-right: auto; /* Centraliza o botão dentro do seu contêiner pai */
+    }
+
+    .read-more-btn:hover {
+        background-color: var(--accent); /* Ex: muda para a cor de destaque ao passar o mouse */
+        /* Ou, se preferir um tom mais escuro da primary: */
+        /* background-color: darken(var(--primary), 10%); */ /* Isso exigiria um pré-processador CSS como Sass/Less */
+        /* Se não usar pré-processador, apenas escolha uma cor mais escura, tipo #222e3f */
+    }
     /* Estilo para a seção de Conquistas */
     #achievements {
         padding: 50px 20px;
@@ -146,31 +189,25 @@
   </header>
 
   <section id="about">
-  <h2><span class="lang-pt">Sobre</span><span class="lang-en">About</span></h2>
-    <p>
-      <span class="lang-pt">
-        <strong>Profissional com experiência em Gestão de Continuidade de Negócios (GCN)</strong>, atuando na implementação de sistemas alinhados à ISO 22301, com integração a frameworks como COBIT, ITIL e metodologias de gestão de riscos operacionais e tecnológicos.
-        <br><br>
-        Atuei na condução de Análises de Impacto ao Negócio (BIA), elaboração de Planos de Continuidade (PCO), Planos de Recuperação de Desastres (DRP) e testes de mesa em ambientes com alta exigência regulatória. Apoiei auditorias internas e externas, além de contribuir para a certificação ISO 22301 no escopo de adquirência e pagamento presencial.
-        <br><br>
-        Experiência na disseminação da cultura de continuidade por meio de treinamentos, planos de comunicação e ações de conscientização com foco em resiliência organizacional. Tenho familiaridade com estruturas de Governança de TI, resposta a incidentes, gestão de crises, e conformidade com normas como ISO 27001 e LGPD.
-        <br><br>
-        Utilizo ferramentas como Power BI, Excel avançado, SQL e Python para controle de planos, avaliação de riscos, automações e apoio à análise de indicadores (KPIs/KRIs). Também acompanhei ambientes críticos em nuvem (AWS, Azure), com foco em resiliência de serviços e definição de parâmetros como RTO e RPO.
-        <br><br>
-        Estou em constante evolução técnica e atento a ambientes que valorizem boas práticas de governança, conformidade, continuidade e segurança da informação como elementos centrais da estratégia.
-      </span>
-      <span class="lang-en">
-        <strong>Experienced Business Continuity Management (BCM) professional</strong>, implementing systems aligned with ISO 22301, integrated with frameworks such as COBIT, ITIL, and operational and technological risk management methodologies.
-        <br><br>
-        Conducted Business Impact Analyses (BIA), developed Business Continuity Plans (BCP), Disaster Recovery Plans (DRP), and tabletop exercises in highly regulated environments. Supported internal and external audits, and contributed to ISO 22301 certification within the acquiring and in-person payment scope.
-        <br><br>
-        Experienced in fostering a continuity culture through training, communication plans, and awareness initiatives focused on organizational resilience. Familiar with IT Governance structures, incident response, crisis management, and compliance with standards like ISO 27001 and LGPD.
-        <br><br>
-        Proficient in tools such as Power BI, advanced Excel, SQL, and Python for plan control, risk assessment, automation, and supporting KPI/KRI analysis. Also monitored critical cloud environments (AWS, Azure), focusing on service resilience and defining parameters like RTO and RPO.
-        <br><br>
-        I am committed to continuous technical evolution and seek environments that value strong governance, compliance, business continuity, and information security practices as central to their strategy.
-      </span>
-    </p>
+    <h2><span class="lang-pt">Sobre</span><span class="lang-en">About</span></h2>
+    <div class="about-content">
+        <span class="lang-pt">
+            <p><strong>Profissional com experiência em Gestão de Continuidade de Negócios (GCN)</strong>, atuando na implementação de sistemas alinhados à ISO 22301, com integração a frameworks como COBIT, ITIL e metodologias de gestão de riscos operacionais e tecnológicos.</p>
+            <div class="more-content-pt"> <p>Atuei na condução de Análises de Impacto ao Negócio (BIA), elaboração de Planos de Continuidade (PCO), Planos de Recuperação de Desastres (DRP) e testes de mesa em ambientes com alta exigência regulatória. Apoiei auditorias internas e externas, além de contribuir para a certificação ISO 22301 no escopo de adquirência e pagamento presencial.</p>
+                <p>Experiência na disseminação da cultura de continuidade por meio de treinamentos, planos de comunicação e ações de conscientização com foco em resiliência organizacional. Tenho familiaridade com estruturas de Governança de TI, resposta a incidentes, gestão de crises, e conformidade com normas como ISO 27001 e LGPD.</p>
+                <p>Utilizo ferramentas como Power BI, Excel avançado, SQL e Python para controle de planos, avaliação de riscos, automações e apoio à análise de indicadores (KPIs/KRIs). Também acompanhei ambientes críticos em nuvem (AWS, Azure), com foco em resiliência de serviços e definição de parâmetros como RTO e RPO.</p>
+                <p>Estou em constante evolução técnica e atento a ambientes que valorizem boas práticas de governança, conformidade, continuidade e segurança da informação como elementos centrais da estratégia.</p>
+            </div>
+        </span>
+        <span class="lang-en">
+            <p><strong>Experienced Business Continuity Management (BCM) professional</strong>, implementing systems aligned with ISO 22301, integrated with frameworks such as COBIT, ITIL, and operational and technological risk management methodologies.</p>
+            <div class="more-content-en"> <p>Conducted Business Impact Analyses (BIA), developed Business Continuity Plans (BCP), Disaster Recovery Plans (DRP), and tabletop exercises in highly regulated environments. Supported internal and external audits, and contributed to ISO 22301 certification within the acquiring and in-person payment scope.</p>
+                <p>Experienced in fostering a continuity culture through training, communication plans, and awareness initiatives focused on organizational resilience. Familiar with IT Governance structures, incident response, crisis management, and compliance with standards like ISO 27001 and LGPD.</p>
+                <p>Proficient in tools such as Power BI, advanced Excel, SQL, and Python for plan control, risk assessment, automation, and supporting KPI/KRI analysis. Also monitored critical cloud environments (AWS, Azure), focusing on service resilience and defining parameters like RTO and RPO.</p>
+                <p>I am committed to continuous technical evolution and seek environments that value strong governance, compliance, business continuity, and information security practices as central to their strategy.</p>
+            </div>
+        </span>
+    </div>
   </section>
 
   <section id="experience">
@@ -804,12 +841,12 @@
     </ul>
   </section>
   <section id="achievements">
-    <h2><span class="lang-pt">Conquistas & Certificações</span><span class="lang-en">Achievements & Certifications</span></h2>
+    <h2><span class="lang-pt">Participação em Certificações</span><span class="lang-en"> Certifications</span></h2>
     <div class="achievements-grid">
         <div class="achievement-item">
             <img src="pagbank-logo-0-1.png" alt="Logo PagBank" title="PagBank - Certificação ISO 22301 (2024)">
             <p class="achievement-text"><span class="lang-pt">PagBank</span><span class="lang-en">PagBank</span></p>
-            <span class="certification-type">ISO 22301 <br> 2024</span> </div>
+            <span class="certification-type">ISO 22301 - Escopo adquirência e pagamento presencial <br> 2024</span> </div>
 
         </div>
   </section>
@@ -830,6 +867,60 @@
           document.body.classList.replace('lang-en','lang-pt'); this.textContent='EN';
         }
       });
+
+      const readMoreButtons = document.querySelectorAll('.read-more-btn');
+      const langToggleBtnAbout = document.getElementById('lang-toggle'); // Usando um nome diferente para evitar conflito com 'langBtn'
+
+      function setupReadMore(currentLang) {
+          readMoreButtons.forEach(button => {
+              if (button.dataset.lang === currentLang) {
+                  button.style.display = 'block'; // Exibe o botão do idioma atual
+              } else {
+                  button.style.display = 'none'; // Oculta o botão do outro idioma
+              }
+
+              // Remove listeners antigos para evitar duplicação em chamadas repetidas (ex: ao trocar idioma)
+              // Cria um novo handler para poder remover
+              const newClickHandler = function() {
+                  const moreContentClass = `.more-content-${currentLang}`;
+                  const moreContent = document.querySelector(moreContentClass);
+
+                  if (moreContent) {
+                      if (moreContent.classList.contains('show')) {
+                          moreContent.classList.remove('show');
+                          button.textContent = (currentLang === 'pt' ? 'Leia Mais' : 'Read More');
+                      } else {
+                          moreContent.classList.add('show');
+                          button.textContent = (currentLang === 'pt' ? 'Mostrar Menos' : 'Show Less');
+                          // Ajusta o scroll se o conteúdo for revelado abaixo da tela
+                          moreContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                      }
+                  }
+              };
+
+              // Remove qualquer handler anterior para evitar múltiplos eventos no mesmo botão
+              if (button._readMoreClickHandler) {
+                  button.removeEventListener('click', button._readMoreClickHandler);
+              }
+              button.addEventListener('click', newClickHandler);
+              button._readMoreClickHandler = newClickHandler; // Guarda a referência do handler
+
+              // Certifica-se de que o texto do botão esteja correto no carregamento ou troca de idioma
+              const moreContent = document.querySelector(`.more-content-${currentLang}`);
+              if (moreContent && moreContent.classList.contains('show')) {
+                  button.textContent = (currentLang === 'pt' ? 'Mostrar Menos' : 'Show Less');
+              } else {
+                  button.textContent = (currentLang === 'pt' ? 'Leia Mais' : 'Read More');
+              }
+          });
+      }
+
+    // Inicializa a funcionalidade de "Leia Mais" para o idioma padrão ao carregar a página
+    const initialLang = document.body.classList.contains('lang-en') ? 'en' : 'pt'; // Detecta o idioma inicial do body
+    setupReadMore(initialLang);
+
+    // Removi o bloco 'if (langToggleBtn)' duplicado aqui e integrei a chamada 'setupReadMore' no listener de 'langBtn' acima.
+    // --- Fim do código para "Leia Mais" na seção "Sobre" ---
 
       // Cards interactivity (similar to skill-items)
       const cards = document.querySelectorAll('.card');
