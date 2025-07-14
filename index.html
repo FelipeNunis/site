@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="description" content="Portfólio de Felipe Duo, profissional de Continuidade de Negócios e Segurança da Informação. Experiência com ISO 22301, BIA, Gestão de Crises e Power BI.">
+  <meta property="og:title" content="Felipe Duo – Portfólio de Continuidade de Negócios">
+  <meta property="og:description" content="Experiência em GCN, ISO 22301, BIA, Gestão de Crises, Power BI, LGPD e mais.">
+  <meta property="og:type" content="website">
+
   <title>Felipe Duo – Portfolio Interativo</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -30,20 +36,14 @@
     }
 
     #about p {
-        /* REMOVA ESTAS PROPRIEDADES: */
-        /* background: var(--neutral-dark); */
-        /* padding: 1rem; */
-        /* border-radius: 8px; */
         line-height: 1.6;
-        /* Adicionado para espaçamento entre os parágrafos, já que você usava <br><br> */
-        margin-bottom: 1em; /* Adiciona espaçamento entre parágrafos, ajuste se necessário */
+        margin-bottom: 1em; 
     }
 
-    /* Opcional: Se você quer que a seção inteira tenha um fundo, adicione aqui */
     #about {
-        background: var(--neutral-dark); /* Ex: aplicar no #about se quiser o fundo cinza claro para toda a seção */
-        padding: 1rem; /* Adicionar padding aqui se mover de #about p */
-        border-radius: 8px; /* Adicionar border-radius aqui se mover de #about p */
+        background: var(--neutral-dark);
+        padding: 1rem;
+        border-radius: 8px;
     }
     /* Cards */
     .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 1rem; margin-top: 1rem; }
@@ -69,10 +69,11 @@
     #contact-button, #linkedin-button { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.2); position: fixed; z-index: 100; cursor: pointer; bottom: 1rem; }
     #contact-button { right: 1rem; background: var(--primary); color: white; }
     #linkedin-button { right: calc(1rem + 48px + 0.5rem); background: #0A66C2; color: white; }
-    /* Ajustes para o botão "Leia Mais" */
+    
+    /* AJUSTE AQUI: CSS para o botão "Leia Mais" e seu conteúdo expansível */
     .read-more-btn {
-        background-color: var(--primary); /* Usando sua variável primary color, que é #334155 */
-        color: white; /* Cor do texto no botão */
+        background-color: var(--primary);
+        color: white;
         border: none;
         padding: 10px 15px;
         margin-top: 15px;
@@ -80,18 +81,21 @@
         border-radius: 5px;
         font-size: 1em;
         transition: background-color 0.3s ease;
-        /* Adicionado para alinhamento */
-        display: block; /* Garante que o botão ocupe sua própria linha */
-        margin-left: auto; /* Centraliza o botão dentro do seu contêiner pai */
-        margin-right: auto; /* Centraliza o botão dentro do seu contêiner pai */
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .read-more-btn:hover {
+        background-color: var(--accent);
+    }
+    .more-content-pt, .more-content-en {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+        /* Garante que o conteúdo não cause um "pulo" no layout antes de animar */
+        display: block; 
     }
 
-    .read-more-btn:hover {
-        background-color: var(--accent); /* Ex: muda para a cor de destaque ao passar o mouse */
-        /* Ou, se preferir um tom mais escuro da primary: */
-        /* background-color: darken(var(--primary), 10%); */ /* Isso exigiria um pré-processador CSS como Sass/Less */
-        /* Se não usar pré-processador, apenas escolha uma cor mais escura, tipo #222e3f */
-    }
     /* Estilo para a seção de Conquistas */
     #achievements {
         padding: 50px 20px;
@@ -108,11 +112,10 @@
     /* Estilo para a grade dos badges */
     .achievements-grid {
         display: grid;
-        /* Se tiver apenas um item, ele centralizará por padrão devido ao margin: 0 auto; no pai */
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsivo: 200px mínimo, 1fr máximo */
-        gap: 30px; /* Espaçamento entre os badges */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+        gap: 30px;
         max-width: 1200px;
-        margin: 0 auto; /* Centraliza a grade */
+        margin: 0 auto;
         padding: 20px;
     }
 
@@ -128,21 +131,20 @@
         justify-content: center;
         text-align: center;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        /* Adicionado para centralizar um único item na grade, se a grade só tiver 1 coluna */
-        margin: 0 auto; /* Isso vai centralizar o item dentro da célula da grid */
-        max-width: 250px; /* Um max-width para o item, se ele estiver sozinho */
+        margin: 0 auto;
+        max-width: 250px;
     }
 
     .achievement-item:hover {
-        transform: translateY(-5px); /* Efeito de elevação ao passar o mouse */
+        transform: translateY(-5px);
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
 
     .achievement-item img {
-        max-width: 120px; /* Tamanho máximo para os logos */
+        max-width: 120px;
         height: auto;
         margin-bottom: 15px;
-        object-fit: contain; /* Garante que a imagem se encaixe sem distorcer */
+        object-fit: contain;
     }
 
     .achievement-text {
@@ -154,12 +156,11 @@
 
     .certification-type {
         font-size: 0.9em;
-        color: #007bff; /* Cor para destacar o tipo de certificação */
+        color: #007bff;
         font-weight: 500;
-        line-height: 1.3; /* Ajusta o espaçamento da linha para o ano */
+        line-height: 1.3;
     }
 
-    /* Responsividade básica para telas menores */
     @media (max-width: 768px) {
         .achievements-grid {
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -183,8 +184,8 @@
   <header>
     <h1>Felipe Duo</h1>
     <p>
-      <span class="lang-pt"> Continuidade de Negócios & Segurança da Informação | BIA | Gestão de Crises | ISO 22301 | Power BI | LGPD</span>
-      <span class="lang-en"> Business Continuity & InfoSec | BIA | Crisis Management | ISO 22301 | Power BI | GDPL</span>
+      <span class="lang-pt"> Continuidade de Negócios & Segurança da Informação • BIA • Gestão de Crises • ISO 22301 • Power BI • LGPD</span>
+      <span class="lang-en"> Business Continuity & InfoSec • BIA • Crisis Management • ISO 22301 • Power BI • GDPL</span>
     </p>
   </header>
 
@@ -193,7 +194,11 @@
     <div class="about-content">
         <span class="lang-pt">
             <p><strong>Profissional com experiência em Gestão de Continuidade de Negócios (GCN)</strong>, atuando na implementação de sistemas alinhados à ISO 22301, com integração a frameworks como COBIT, ITIL e metodologias de gestão de riscos operacionais e tecnológicos.</p>
-            <div class="more-content-pt"> <p>Atuei na condução de Análises de Impacto ao Negócio (BIA), elaboração de Planos de Continuidade (PCO), Planos de Recuperação de Desastres (DRP) e testes de mesa em ambientes com alta exigência regulatória. Apoiei auditorias internas e externas, além de contribuir para a certificação ISO 22301 no escopo de adquirência e pagamento presencial.</p>
+            
+            <button class="read-more-btn" data-lang="pt">Leia Mais</button>
+
+            <div class="more-content-pt"> 
+                <p>Atuei na condução de Análises de Impacto ao Negócio (BIA), elaboração de Planos de Continuidade (PCO), Planos de Recuperação de Desastres (DRP) e testes de mesa em ambientes com alta exigência regulatória. Apoiei auditorias internas e externas, além de contribuir para a certificação ISO 22301 no escopo de adquirência e pagamento presencial.</p>
                 <p>Experiência na disseminação da cultura de continuidade por meio de treinamentos, planos de comunicação e ações de conscientização com foco em resiliência organizacional. Tenho familiaridade com estruturas de Governança de TI, resposta a incidentes, gestão de crises, e conformidade com normas como ISO 27001 e LGPD.</p>
                 <p>Utilizo ferramentas como Power BI, Excel avançado, SQL e Python para controle de planos, avaliação de riscos, automações e apoio à análise de indicadores (KPIs/KRIs). Também acompanhei ambientes críticos em nuvem (AWS, Azure), com foco em resiliência de serviços e definição de parâmetros como RTO e RPO.</p>
                 <p>Estou em constante evolução técnica e atento a ambientes que valorizem boas práticas de governança, conformidade, continuidade e segurança da informação como elementos centrais da estratégia.</p>
@@ -201,7 +206,11 @@
         </span>
         <span class="lang-en">
             <p><strong>Experienced Business Continuity Management (BCM) professional</strong>, implementing systems aligned with ISO 22301, integrated with frameworks such as COBIT, ITIL, and operational and technological risk management methodologies.</p>
-            <div class="more-content-en"> <p>Conducted Business Impact Analyses (BIA), developed Business Continuity Plans (BCP), Disaster Recovery Plans (DRP), and tabletop exercises in highly regulated environments. Supported internal and external audits, and contributed to ISO 22301 certification within the acquiring and in-person payment scope.</p>
+
+            <button class="read-more-btn" data-lang="en" style="display: none;">Read More</button>
+
+            <div class="more-content-en"> 
+                <p>Conducted Business Impact Analyses (BIA), developed Business Continuity Plans (BCP), Disaster Recovery Plans (DRP), and tabletop exercises in highly regulated environments. Supported internal and external audits, and contributed to ISO 22301 certification within the acquiring and in-person payment scope.</p>
                 <p>Experienced in fostering a continuity culture through training, communication plans, and awareness initiatives focused on organizational resilience. Familiar with IT Governance structures, incident response, crisis management, and compliance with standards like ISO 27001 and LGPD.</p>
                 <p>Proficient in tools such as Power BI, advanced Excel, SQL, and Python for plan control, risk assessment, automation, and supporting KPI/KRI analysis. Also monitored critical cloud environments (AWS, Azure), focusing on service resilience and defining parameters like RTO and RPO.</p>
                 <p>I am committed to continuous technical evolution and seek environments that value strong governance, compliance, business continuity, and information security practices as central to their strategy.</p>
@@ -787,69 +796,65 @@
       </ul>
   </section>
 
-  <section id="timeline-list">
-    <h2><span class="lang-pt">Linha do Tempo</span><span class="lang-en">Experience</span></h2>
+  <section id="professional-experience">
+    <h2><span class="lang-pt">Experiência Profissional</span><span class="lang-en">Professional Experience</span></h2>
     <ul class="skills-list">
       <li class="skill-item">2022 – 2024: <span class="lang-pt">Analista de Continuidade de Negócios – PagBank</span><span class="lang-en">Business Continuity Analyst – PagBank</span>
         <div class="skill-content">
-          <span class="lang-pt">Durante meu período no PagBank como Analista de Continuidade de Negócios, tive a oportunidade de atuar diretamente na sustentação da continuidade de negócios em um ambiente crítico, dinâmico e regulado. Apoiei dezenas de análises de impacto ao negócio (BIA), colaborando com áreas-chave para identificar processos sensíveis, definir prioridades de recuperação e alinhar expectativas com as reais capacidades da organização.
-            <br><br>
-            Participei da elaboração e atualização de centenas de Planos de Continuidade Operacional (PCO), buscando garantir que os objetivos mínimos de continuidade fossem não apenas definidos, mas de fato aplicáveis em cenários reais. A partir desse trabalho, apoiei iniciativas que resultaram na redução do tempo de recuperação (RTO) de serviços essenciais — fundamentais para a conformidade com SLAs e exigências regulatórias.
-            <br><br>
-            Também estive envolvido no desenvolvimento de dashboards e relatórios em <strong>Power BI</strong>, voltados para comitês de segurança e continuidade, transformando dados operacionais em informações estratégicas para tomada de decisão. Trabalhei próximo à liderança na implantação do Sistema de Gestão de Continuidade de Negócios (SGCN) e atuei ativamente nas auditorias internas e externas vinculadas à norma <strong>ISO 22301</strong>.
-            <br><br>
-            Com orgulho, contribuí para que a empresa obtivesse a certificação <strong>ISO 22301</strong> no escopo de pagamento presencial e adquirência, apoiando na integração dos requisitos normativos aos processos operacionais. Além disso, participei da organização e execução de diversos testes de mesa e simulações de desastre (DR), promovendo a avaliação prática da maturidade dos planos e da prontidão das equipes envolvidas.
-            <br><br>
-            Ministrei dezenas de treinamentos, produzi materiais de comunicação e acompanhei ambientes críticos em nuvem (<strong>AWS</strong> e <strong>Azure</strong>), com foco na integridade dos serviços em produção (PRD) e no cumprimento dos parâmetros definidos de RTO e RPO.
+          <span class="lang-pt">
+            <p>Durante meu período no PagBank como Analista de Continuidade de Negócios, tive a oportunidade de atuar diretamente na sustentação da continuidade de negócios em um ambiente crítico, dinâmico e regulado. Apoiei dezenas de análises de impacto ao negócio (BIA), colaborando com áreas-chave para identificar processos sensíveis, definir prioridades de recuperação e alinhar expectativas com as reais capacidades da organização.</p>
+            <p>Participei da elaboração e atualização de centenas de Planos de Continuidade Operacional (PCO), buscando garantir que os objetivos mínimos de continuidade fossem não apenas definidos, mas de fato aplicáveis em cenários reais. A partir desse trabalho, apoiei iniciativas que resultaram na redução do tempo de recuperação (RTO) de serviços essenciais — fundamentais para a conformidade com SLAs e exigências regulatórias.</p>
+            <p>Também estive envolvido no desenvolvimento de dashboards e relatórios em <strong>Power BI</strong>, voltados para comitês de segurança e continuidade, transformando dados operacionais em informações estratégicas para tomada de decisão. Trabalhei próximo à liderança na implantação do Sistema de Gestão de Continuidade de Negócios (SGCN) e atuei ativamente nas auditorias internas e externas vinculadas à norma <strong>ISO 22301</strong>.</p>
+            <p>Com orgulho, contribuí para que a empresa obtivesse a certificação <strong>ISO 22301</strong> no escopo de pagamento presencial e adquirência, apoiando na integração dos requisitos normativos aos processos operacionais. Além disso, participei da organização e execução de diversos testes de mesa e simulações de desastre (DR), promovendo a avaliação prática da maturidade dos planos e da prontidão das equipes envolvidas.</p>
+            <p>Ministrei dezenas de treinamentos, produzi materiais de comunicação e acompanhei ambientes críticos em nuvem (<strong>AWS</strong> e <strong>Azure</strong>), com foco na integridade dos serviços em produção (PRD) e no cumprimento dos parâmetros definidos de RTO e RPO.</p>
           </span>
-          <span class="lang-en">During my tenure at PagBank as a Business Continuity Analyst, I had the opportunity to directly support business continuity in a critical, dynamic, and regulated environment. I assisted in dozens of Business Impact Analyses (BIA), collaborating with key areas to identify sensitive processes, define recovery priorities, and align expectations with the organization's actual capabilities.
-            <br><br>
-            I participated in the development and updating of hundreds of Business Continuity Plans (BCP), aiming to ensure that minimum continuity objectives were not only defined but also practically applicable in real scenarios. This work supported initiatives that resulted in the reduction of Recovery Time Objectives (RTO) for essential services — crucial for compliance with SLAs and regulatory requirements.
-            <br><br>
-            I was also involved in developing <strong>Power BI</strong> dashboards and reports for security and continuity committees, transforming operational data into strategic information for decision-making. I worked closely with leadership on the implementation of the Business Continuity Management System (BCMS) and actively participated in internal and external audits related to the <strong>ISO 22301</strong> standard.
-            <br><br>
-            I proudly contributed to the company's achievement of <strong>ISO 22301</strong> certification for in-person payment and acquiring scope, supporting the integration of normative requirements into operational processes. Additionally, I participated in the organization and execution of various tabletop exercises and disaster recovery (DR) simulations, promoting the practical evaluation of plan maturity and team readiness.
-            <br><br>
-            I conducted dozens of training sessions, produced communication materials, and monitored critical cloud environments (<strong>AWS</strong> and <strong>Azure</strong>), focusing on the integrity of production services (PRD) and adherence to defined RTO and RPO parameters.
+          <span class="lang-en">
+            <p>During my tenure at PagBank as a Business Continuity Analyst, I had the opportunity to directly support business continuity in a critical, dynamic, and regulated environment. I assisted in dozens of Business Impact Analyses (BIA), collaborating with key areas to identify sensitive processes, define recovery priorities, and align expectations with the organization's actual capabilities.</p>
+            <p>I participated in the development and updating of hundreds of Business Continuity Plans (BCP), aiming to ensure that minimum continuity objectives were not only defined but also practically applicable in real scenarios. This work supported initiatives that resulted in the reduction of Recovery Time Objectives (RTO) for essential services — crucial for compliance with SLAs and regulatory requirements.</p>
+            <p>I was also involved in developing <strong>Power BI</strong> dashboards and reports for security and continuity committees, transforming operational data into strategic information for decision-making. I worked closely with leadership on the implementation of the Business Continuity Management System (BCMS) and actively participated in internal and external audits related to the <strong>ISO 22301</strong> standard.</p>
+            <p>I proudly contributed to the company's achievement of <strong>ISO 22301</strong> certification for in-person payment and acquiring scope, supporting the integration of normative requirements into operational processes. Additionally, I participated in the organization and execution of various tabletop exercises and disaster recovery (DR) simulations, promoting the practical evaluation of plan maturity and team readiness.</p>
+            <p>I conducted dozens of training sessions, produced communication materials, and monitored critical cloud environments (<strong>AWS</strong> and <strong>Azure</strong>), focusing on the integrity of production services (PRD) and adherence to defined RTO and RPO parameters.</p>
           </span>
         </div>
       </li>
       <li class="skill-item">2021 – 2022: <span class="lang-pt">Estagiário de Continuidade de Negócios – PagBank</span><span class="lang-en">Business Continuity Intern – PagBank</span>
         <div class="skill-content">
-          <span class="lang-pt">Como Estagiário de Continuidade de Negócios, prestei apoio na elaboração das Análises de Impacto de Negócios (BIA) e no desenvolvimento de Planos de Continuidade Operacional (PCO). Trabalhei em estreita colaboração com as equipes de tecnologia e negócios, contribuindo para a identificação de processos críticos e estratégias de recuperação.
-            <br><br>
-            Minha atuação incluiu o auxílio na coleta e análise de dados, apoio na construção de relatórios e na comunicação de resultados entre as áreas envolvidas. Também colaborei na implementação de ações voltadas para a melhoria da resiliência organizacional e na documentação dos processos de continuidade.
+          <span class="lang-pt">
+            <p>Como Estagiário de Continuidade de Negócios, prestei apoio na elaboração das Análises de Impacto de Negócios (BIA) e no desenvolvimento de Planos de Continuidade Operacional (PCO). Trabalhei em estreita colaboração com as equipes de tecnologia e negócios, contribuindo para a identificação de processos críticos e estratégias de recuperação.</p>
+            <p>Minha atuação incluiu o auxílio na coleta e análise de dados, apoio na construção de relatórios e na comunicação de resultados entre as áreas envolvidas. Também colaborei na implementação de ações voltadas para a melhoria da resiliência organizacional e na documentação dos processos de continuidade.</p>
           </span>
-          <span class="lang-en">As a Business Continuity Intern, I supported the development of Business Impact Analyses (BIA) and the creation of Business Continuity Plans (BCP). I worked closely with technology and business teams, contributing to the identification of critical processes and recovery strategies.
-            <br><br>
-            My role included assisting with data collection and analysis, supporting report generation, and facilitating communication of results among involved departments. I also collaborated on implementing actions aimed at improving organizational resilience and documenting continuity processes.
+          <span class="lang-en">
+            <p>As a Business Continuity Intern, I supported the development of Business Impact Analyses (BIA) and the creation of Business Continuity Plans (BCP). I worked closely with technology and business teams, contributing to the identification of critical processes and recovery strategies.</p>
+            <p>My role included assisting with data collection and analysis, supporting report generation, and facilitating communication of results among involved departments. I also collaborated on implementing actions aimed at improving organizational resilience and documenting continuity processes.</p>
           </span>
         </div>
       </li>
       <li class="skill-item">2020 – 2021: <span class="lang-pt">Estagiário de Desenvolvimento de Software – JetSoft Tecnologia</span><span class="lang-en">Software Development Intern – JetSoft Tecnologia</span>
         <div class="skill-content">
-          <span class="lang-pt">Como Estagiário de Desenvolvimento de Software, desenvolvi aplicações utilizando a plataforma <strong>Genexus</strong>, aplicando metodologias ágeis como <strong>Scrum</strong> e <strong>Kanban</strong> para garantir a entrega contínua e eficiente de soluções, sempre alinhadas às necessidades do cliente.
-            <br><br>
-            Participei da gestão de projetos, utilizando ferramentas como <strong>Kanban</strong>, <strong>PDCA</strong> e <strong>5W2H</strong> para auxiliar no planejamento, execução e acompanhamento de projetos de TI, contribuindo para a organização e eficiência dos processos. Também atuei no suporte técnico (helpdesk), oferecendo assistência aos usuários e resolvendo problemas técnicos de forma ágil e eficaz.
+          <span class="lang-pt">
+            <p>Como Estagiário de Desenvolvimento de Software, desenvolvi aplicações utilizando a plataforma <strong>Genexus</strong>, aplicando metodologias ágeis como <strong>Scrum</strong> e <strong>Kanban</strong> para garantir a entrega contínua e eficiente de soluções, sempre alinhadas às necessidades do cliente.</p>
+            <p>Participei da gestão de projetos, utilizando ferramentas como <strong>Kanban</strong>, <strong>PDCA</strong> e <strong>5W2H</strong> para auxiliar no planejamento, execução e acompanhamento de projetos de TI, contribuindo para a organização e eficiência dos processos. Também atuei no suporte técnico (helpdesk), oferecendo assistência aos usuários e resolvendo problemas técnicos de forma ágil e eficaz.</p>
           </span>
-          <span class="lang-en">As a Software Development Intern, I developed applications using the <strong>Genexus</strong> platform, applying agile methodologies such as <strong>Scrum</strong> and <strong>Kanban</strong> to ensure continuous and efficient delivery of solutions, always aligned with client needs.
-            <br><br>
-            I participated in project management, utilizing tools like <strong>Kanban</strong>, <strong>PDCA</strong>, and <strong>5W2H</strong> to assist in the planning, execution, and monitoring of IT projects, contributing to process organization and efficiency. I also provided technical support (helpdesk), offering assistance to users and resolving technical issues quickly and effectively.
+          <span class="lang-en">
+            <p>As a Software Development Intern, I developed applications using the <strong>Genexus</strong> platform, applying agile methodologies such as <strong>Scrum</strong> and <strong>Kanban</strong> to ensure continuous and efficient delivery of solutions, always aligned with client needs.</p>
+            <p>I participated in project management, utilizing tools like <strong>Kanban</strong>, <strong>PDCA</strong>, and <strong>5W2H</strong> to assist in the planning, execution, and monitoring of IT projects, contributing to process organization and efficiency. I also provided technical support (helpdesk), offering assistance to users and resolving technical issues quickly and effectively.</p>
           </span>
         </div>
       </li>
     </ul>
   </section>
+
   <section id="achievements">
-    <h2><span class="lang-pt">Participação em Certificações</span><span class="lang-en"> Certifications</span></h2>
+    <h2><span class="lang-pt">Certificações e Conquistas</span><span class="lang-en">Certifications & Achievements</span></h2>
     <div class="achievements-grid">
         <div class="achievement-item">
             <img src="pagbank-logo-0-1.png" alt="Logo PagBank" title="PagBank - Certificação ISO 22301 (2024)">
             <p class="achievement-text"><span class="lang-pt">PagBank</span><span class="lang-en">PagBank</span></p>
-            <span class="certification-type">ISO 22301 - Escopo adquirência e pagamento presencial <br> 2024</span> </div>
-
+            <span class="certification-type">ISO 22301 - Escopo adquirência e pagamento presencial <br> 2024</span> 
         </div>
+    </div>
   </section>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       feather.replace();
@@ -861,128 +866,120 @@
       // Language toggle
       const langBtn = document.getElementById('lang-toggle');
       langBtn.addEventListener('click', function() {
+        let newLang;
         if (document.body.classList.contains('lang-pt')) {
-          document.body.classList.replace('lang-pt','lang-en'); this.textContent='PT';
+          document.body.classList.replace('lang-pt','lang-en');
+          this.textContent='PT';
+          newLang = 'en';
         } else {
-          document.body.classList.replace('lang-en','lang-pt'); this.textContent='EN';
+          document.body.classList.replace('lang-en','lang-pt');
+          this.textContent='EN';
+          newLang = 'pt';
         }
+        setupReadMore(newLang);
       });
 
-      const readMoreButtons = document.querySelectorAll('.read-more-btn');
-      const langToggleBtnAbout = document.getElementById('lang-toggle'); // Usando um nome diferente para evitar conflito com 'langBtn'
-
+      // Lógica para o botão "Leia Mais"
       function setupReadMore(currentLang) {
-          readMoreButtons.forEach(button => {
-              if (button.dataset.lang === currentLang) {
-                  button.style.display = 'block'; // Exibe o botão do idioma atual
+          document.querySelectorAll('.read-more-btn').forEach(button => {
+              const lang = button.dataset.lang;
+              const moreContent = button.nextElementSibling; // Pega o .more-content-xx
+
+              if (lang === currentLang) {
+                  button.style.display = 'block';
+                  // Reseta o texto do botão para o estado inicial
+                  const isExpanded = moreContent.style.maxHeight && moreContent.style.maxHeight !== '0px';
+                  button.textContent = isExpanded ? (lang === 'pt' ? 'Mostrar Menos' : 'Show Less') : (lang === 'pt' ? 'Leia Mais' : 'Read More');
               } else {
-                  button.style.display = 'none'; // Oculta o botão do outro idioma
+                  button.style.display = 'none';
               }
 
-              // Remove listeners antigos para evitar duplicação em chamadas repetidas (ex: ao trocar idioma)
-              // Cria um novo handler para poder remover
+              // Remove listener antigo para evitar duplicação
               const newClickHandler = function() {
-                  const moreContentClass = `.more-content-${currentLang}`;
-                  const moreContent = document.querySelector(moreContentClass);
-
-                  if (moreContent) {
-                      if (moreContent.classList.contains('show')) {
-                          moreContent.classList.remove('show');
-                          button.textContent = (currentLang === 'pt' ? 'Leia Mais' : 'Read More');
-                      } else {
-                          moreContent.classList.add('show');
-                          button.textContent = (currentLang === 'pt' ? 'Mostrar Menos' : 'Show Less');
-                          // Ajusta o scroll se o conteúdo for revelado abaixo da tela
-                          moreContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                      }
+                  const isExpanded = moreContent.style.maxHeight && moreContent.style.maxHeight !== '0px';
+                  if (isExpanded) {
+                      moreContent.style.maxHeight = null;
+                      button.textContent = (lang === 'pt' ? 'Leia Mais' : 'Read More');
+                  } else {
+                      moreContent.style.maxHeight = moreContent.scrollHeight + 'px';
+                      button.textContent = (lang === 'pt' ? 'Mostrar Menos' : 'Show Less');
                   }
               };
-
-              // Remove qualquer handler anterior para evitar múltiplos eventos no mesmo botão
-              if (button._readMoreClickHandler) {
-                  button.removeEventListener('click', button._readMoreClickHandler);
+              
+              if (button.clickHandler) {
+                  button.removeEventListener('click', button.clickHandler);
               }
               button.addEventListener('click', newClickHandler);
-              button._readMoreClickHandler = newClickHandler; // Guarda a referência do handler
-
-              // Certifica-se de que o texto do botão esteja correto no carregamento ou troca de idioma
-              const moreContent = document.querySelector(`.more-content-${currentLang}`);
-              if (moreContent && moreContent.classList.contains('show')) {
-                  button.textContent = (currentLang === 'pt' ? 'Mostrar Menos' : 'Show Less');
-              } else {
-                  button.textContent = (currentLang === 'pt' ? 'Leia Mais' : 'Read More');
-              }
+              button.clickHandler = newClickHandler;
           });
       }
 
-    // Inicializa a funcionalidade de "Leia Mais" para o idioma padrão ao carregar a página
-    const initialLang = document.body.classList.contains('lang-en') ? 'en' : 'pt'; // Detecta o idioma inicial do body
-    setupReadMore(initialLang);
+      // Inicializa o "Leia Mais" para o idioma padrão
+      const initialLang = document.body.classList.contains('lang-en') ? 'en' : 'pt';
+      setupReadMore(initialLang);
 
-    // Removi o bloco 'if (langToggleBtn)' duplicado aqui e integrei a chamada 'setupReadMore' no listener de 'langBtn' acima.
-    // --- Fim do código para "Leia Mais" na seção "Sobre" ---
-
-      // Cards interactivity (similar to skill-items)
+      // Interatividade dos Cards de Experiência Técnica com scroll
       const cards = document.querySelectorAll('.card');
       cards.forEach(card => card.addEventListener('click', () => {
         const targetId = card.dataset.target;
         const targetContent = document.getElementById(targetId);
 
         if (targetContent) {
-          // Close all other active cards and their contents
-          document.querySelectorAll('.card.active').forEach(c => {
-            if (c !== card) c.classList.remove('active');
-          });
+          const isActive = targetContent.classList.contains('active');
+
+          document.querySelectorAll('.card.active').forEach(c => c.classList.remove('active'));
           document.querySelectorAll('.content.active').forEach(c => {
-            if (c !== targetContent) {
-              c.classList.remove('active');
-              c.style.maxHeight = '0';
-            }
+            c.classList.remove('active');
+            c.style.maxHeight = null;
           });
 
-          // Toggle the clicked card's active state and content
-          card.classList.toggle('active');
-          targetContent.classList.toggle('active');
-
-          if (targetContent.classList.contains('active')) {
+          if (!isActive) {
+            card.classList.add('active');
+            targetContent.classList.add('active');
             targetContent.style.maxHeight = targetContent.scrollHeight + 'px';
-          } else {
-            targetContent.style.maxHeight = '0';
+            setTimeout(() => {
+                targetContent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 300); // Leve atraso para a rolagem ser mais suave após a animação iniciar
           }
         }
       }));
 
-      // Function to close content panels (for the close button)
+      // Função para fechar os cards
       window.closeContent = () => {
         document.querySelectorAll('.content.active').forEach(c => {
           c.classList.remove('active');
-          c.style.maxHeight = '0'; // Ensure content collapses
+          c.style.maxHeight = null;
         });
         document.querySelectorAll('.card.active').forEach(c => c.classList.remove('active'));
       };
 
-      // Skills & Timeline expand
+      // Interatividade das listas expansíveis (Skills e Experiência) com scroll
       document.querySelectorAll('.skill-item').forEach(item => {
         const content = item.querySelector('.skill-content');
-        // Initialize all skill-content to closed state
+        if (!content) return;
         content.style.maxHeight = '0';
 
-        item.addEventListener('click', () => {
-          // Close all other active skill contents
-          document.querySelectorAll('.skill-content.active').forEach(c => {
-            if (c !== content) { // Don't close the current one if it's already active
-              c.classList.remove('active');
-              c.style.maxHeight = '0';
-            }
-          });
+        item.addEventListener('click', (e) => {
+            if (e.target.closest('a')) return;
 
-          // Toggle the current skill content
-          content.classList.toggle('active');
-          if (content.classList.contains('active')) {
-            content.style.maxHeight = content.scrollHeight + 'px';
-          } else {
-            content.style.maxHeight = '0';
-          }
+            const isActive = content.classList.contains('active');
+
+            document.querySelectorAll('.skill-content.active').forEach(activeContent => {
+                if (activeContent !== content) {
+                    activeContent.classList.remove('active');
+                    activeContent.style.maxHeight = '0';
+                }
+            });
+
+            content.classList.toggle('active');
+            if (content.classList.contains('active')) {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                setTimeout(() => {
+                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300);
+            } else {
+                content.style.maxHeight = '0';
+            }
         });
       });
     });
