@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
   <meta name="description" content="Portfólio de Felipe Duo, profissional de Continuidade de Negócios e Segurança da Informação. Experiência com ISO 22301, BIA, Gestão de Crises e Power BI.">
   <meta property="og:title" content="Felipe Duo – Portfólio de Continuidade de Negócios">
   <meta property="og:description" content="Experiência em GCN, ISO 22301, BIA, Gestão de Crises, Power BI, LGPD e mais.">
@@ -34,12 +33,10 @@
         margin: 2rem auto;
         padding: 0 1rem;
     }
-
     #about p {
         line-height: 1.6;
         margin-bottom: 1em; 
     }
-
     #about {
         background: var(--neutral-dark);
         padding: 1rem;
@@ -47,15 +44,16 @@
     }
     /* Cards */
     .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 1rem; margin-top: 1rem; }
-    .cards.hide-others .card:not(.active) { display: none; }
     .card { background: var(--neutral-dark); padding: 1.5rem; border-radius: 12px; text-align: center; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform 0.4s ease, box-shadow 0.4s ease; border: 2px solid transparent; }
     .card i { font-size: 2rem; margin-bottom: 0.5rem; }
     .card span { font-weight: 600; }
     .card:hover { transform: translateY(-5px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    .card.active { background: var(--accent); color: white; border-color: var(--primary); }
-    .content { max-height: 0; overflow: hidden; transition: max-height 0.6s ease-in-out; background: var(--neutral-dark); padding: 0 1.5rem; border-radius: 12px; margin-top: 0; position: relative; }
-    .content.active { max-height: 600px; padding: 1.5rem; margin-top: 1rem; border: 2px solid var(--primary); }
-    .close-btn { position: absolute; top: 8px; right: 12px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
+    
+    /* Oculta os painéis de conteúdo originais da seção Experiência, pois agora serão mostrados no modal */
+    #experience .content {
+      display: none;
+    }
+
     /* Skills List */
     .skills-list { list-style: none; padding: 0; }
     .skill-item { background: var(--neutral-dark); padding: 0.75rem 1rem; border-radius: 8px; cursor: pointer; margin-bottom: 0.5rem; transition: background 0.3s; }
@@ -70,106 +68,91 @@
     #contact-button { right: 1rem; background: var(--primary); color: white; }
     #linkedin-button { right: calc(1rem + 48px + 0.5rem); background: #0A66C2; color: white; }
     
-    /* AJUSTE AQUI: CSS para o botão "Leia Mais" e seu conteúdo expansível */
     .read-more-btn {
-        background-color: var(--primary);
-        color: white;
-        border: none;
-        padding: 10px 15px;
-        margin-top: 15px;
-        cursor: pointer;
-        border-radius: 5px;
-        font-size: 1em;
-        transition: background-color 0.3s ease;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+        background-color: var(--primary); color: white; border: none; padding: 10px 15px; margin-top: 15px; cursor: pointer; border-radius: 5px; font-size: 1em; transition: background-color 0.3s ease; display: block; margin-left: auto; margin-right: auto;
     }
-    .read-more-btn:hover {
-        background-color: var(--accent);
-    }
+    .read-more-btn:hover { background-color: var(--accent); }
     .more-content-pt, .more-content-en {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.5s ease-in-out;
-        /* Garante que o conteúdo não cause um "pulo" no layout antes de animar */
-        display: block; 
+        max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; display: block; 
     }
 
-    /* Estilo para a seção de Conquistas */
     #achievements {
-        padding: 50px 20px;
-        background-color: #f8f9fa; /* Cor de fundo leve para destacar a seção */
-        text-align: center;
+        padding: 50px 20px; background-color: #f8f9fa; text-align: center;
     }
-
     #achievements h2 {
-        margin-bottom: 40px;
-        color: #333;
-        font-size: 2.2em;
+        margin-bottom: 40px; color: #333; font-size: 2.2em;
     }
-
-    /* Estilo para a grade dos badges */
     .achievements-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-        gap: 30px;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; padding: 20px;
+    }
+    .achievement-item {
+        background-color: #ffffff; border-radius: 10px; padding: 25px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; margin: 0 auto; max-width: 250px;
+    }
+    .achievement-item:hover {
+        transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    .achievement-item img {
+        max-width: 120px; height: auto; margin-bottom: 15px; object-fit: contain;
+    }
+    .achievement-text {
+        font-size: 1.1em; font-weight: 600; color: #555; margin-bottom: 5px;
+    }
+    .certification-type {
+        font-size: 0.9em; color: #007bff; font-weight: 500; line-height: 1.3;
+    }
+    @media (max-width: 768px) {
+        .achievements-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; }
+        .achievement-item img { max-width: 100px; }
     }
 
-    /* Estilo para cada item/badge individual */
-    .achievement-item {
-        background-color: #ffffff;
-        border-radius: 10px;
-        padding: 25px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* CSS para a janela Modal */
+    .modal-overlay {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.7);
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
-        text-align: center;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        margin: 0 auto;
-        max-width: 250px;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
     }
-
-    .achievement-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
     }
-
-    .achievement-item img {
-        max-width: 120px;
-        height: auto;
-        margin-bottom: 15px;
-        object-fit: contain;
+    .modal-content {
+        background: var(--neutral-light);
+        color: var(--text-light);
+        padding: 2rem;
+        border-radius: 12px;
+        max-width: 800px;
+        width: 90%;
+        max-height: 80vh;
+        overflow-y: auto;
+        position: relative;
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
     }
-
-    .achievement-text {
-        font-size: 1.1em;
-        font-weight: 600;
-        color: #555;
-        margin-bottom: 5px;
+    body.dark .modal-content {
+        background: var(--text-dark);
+        color: var(--neutral-dark);
     }
-
-    .certification-type {
-        font-size: 0.9em;
-        color: #007bff;
-        font-weight: 500;
-        line-height: 1.3;
+    .modal-overlay.active .modal-content {
+        transform: scale(1);
     }
-
-    @media (max-width: 768px) {
-        .achievements-grid {
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-        }
-
-        .achievement-item img {
-            max-width: 100px;
-        }
+    .modal-close-btn {
+        position: absolute;
+        top: 10px; right: 15px;
+        background: none; border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: var(--primary);
+    }
+    body.dark .modal-close-btn {
+        color: var(--accent);
     }
   </style>
 </head>
@@ -194,9 +177,7 @@
     <div class="about-content">
         <span class="lang-pt">
             <p><strong>Profissional com experiência em Gestão de Continuidade de Negócios (GCN)</strong>, atuando na implementação de sistemas alinhados à ISO 22301, com integração a frameworks como COBIT, ITIL e metodologias de gestão de riscos operacionais e tecnológicos.</p>
-            
             <button class="read-more-btn" data-lang="pt">Leia Mais</button>
-
             <div class="more-content-pt"> 
                 <p>Atuei na condução de Análises de Impacto ao Negócio (BIA), elaboração de Planos de Continuidade (PCO), Planos de Recuperação de Desastres (DRP) e testes de mesa em ambientes com alta exigência regulatória. Apoiei auditorias internas e externas, além de contribuir para a certificação ISO 22301 no escopo de adquirência e pagamento presencial.</p>
                 <p>Experiência na disseminação da cultura de continuidade por meio de treinamentos, planos de comunicação e ações de conscientização com foco em resiliência organizacional. Tenho familiaridade com estruturas de Governança de TI, resposta a incidentes, gestão de crises, e conformidade com normas como ISO 27001 e LGPD.</p>
@@ -206,9 +187,7 @@
         </span>
         <span class="lang-en">
             <p><strong>Experienced Business Continuity Management (BCM) professional</strong>, implementing systems aligned with ISO 22301, integrated with frameworks such as COBIT, ITIL, and operational and technological risk management methodologies.</p>
-
             <button class="read-more-btn" data-lang="en" style="display: none;">Read More</button>
-
             <div class="more-content-en"> 
                 <p>Conducted Business Impact Analyses (BIA), developed Business Continuity Plans (BCP), Disaster Recovery Plans (DRP), and tabletop exercises in highly regulated environments. Supported internal and external audits, and contributed to ISO 22301 certification within the acquiring and in-person payment scope.</p>
                 <p>Experienced in fostering a continuity culture through training, communication plans, and awareness initiatives focused on organizational resilience. Familiar with IT Governance structures, incident response, crisis management, and compliance with standards like ISO 27001 and LGPD.</p>
@@ -234,7 +213,6 @@
     </div>
 
     <div id="governanca" class="content">
-      <button class="close-btn" onclick="closeContent()">&times;</button>
       <h3><span class="lang-pt">Documentos & Governança</span><span class="lang-en">Documentation & Governance</span></h3>
       <p>
         <span class="lang-pt">
@@ -253,9 +231,7 @@
         </span>
       </p>
     </div>
-
     <div id="bia" class="content">
-      <button class="close-btn" onclick="closeContent()">&times;</button>
       <h3>BIA</h3>
       <p>
         <span class="lang-pt">
@@ -264,28 +240,22 @@
           Estruturei agendas com áreas-chave de negócio e tecnologia para atender ao cronograma anual das BIAs.
           Utilizei <strong>Kanban (JIRA)</strong> para controle das fases: planejamento, coleta, validação e publicação.
           Apliquei prazos estipulados nas instruções de trabalho tanto para elaboração, correção e aprovação das BIAs, e realizei a documentação das evidências de cada processo até a conclusão do ciclo.
-
           <h4>Condução de Entrevistas e Workshops</h4>
           Realizei contato inicial com as áreas, com alinhamento prévio com os gestores e pontos focais, explicando o objetivo da BIA, a importância estratégica da continuidade de negócios e o papel deles no processo. Apresentei um cronograma com prazos definidos e os entregáveis esperados.
           Preparei entrevistas personalizadas, utilizando histórico da BIA do ano anterior, estrutura da área, os sistemas utilizados, <strong>SLAs</strong>, e processos previamente documentados. Isso me permite fazer perguntas personalizadas e com contexto, o que gera mais confiança dos participantes.
-
           <h4>Instrumentos e Metodologia</h4>
           Metodologia baseada em <strong>ISO 22301</strong> + <strong>COBIT</strong> + <strong>ITIL</strong>.
           Utilizei planilha estruturada em <strong>Excel</strong> com campos obrigatórios, pré-compilada quando possível com seções específicas: Nome e descrição do processo, BU, Dependências de Sistemas de TI, Pessoas-chave / quantidade mínima para operação, Áreas chave para a execução do processo, Áreas impactadas pela ausência da execução do processo, <strong>RTO</strong> (Recovery Time Objective) – tempo máximo de inatividade tolerável, <strong>RPO</strong> (Recovery Point Objective) – perda máxima de dados tolerável, Ponto mínimo de operação, Questões de <strong>ESG</strong>, Dados de Impacto financeiro em decorrência do tempo de interrupção de cada processo mapeado, e Histórico de interrupção e evidências.
-
           <h4>Categorização e Criticidade</h4>
           Classificação dos processos em: Críticos, Alta, Moderados, Baixo.
           Com Definição de Notas de Impactos em: Imagem/reputação, Regulação/Compliance, Financeiro, Operacional, Sistemas.
-
           <h4>Entregáveis e Documentação</h4>
           Documento final validado com gestor e diretoria.
           Registro em <strong>SharePoint</strong> com controle de versão.
           Apresentação executiva dos resultados consolidados (em <strong>PPT</strong> + <strong>Power BI</strong>).
           Inclusão em dossiês de auditoria e governança de continuidade.
-
           <h4>Ferramentas Utilizadas</h4>
           <strong>JIRA</strong>, <strong>Excel Avançado</strong>, <strong>Power BI</strong> para visões consolidadas por criticidade, <strong>PowerPoint</strong> para apresentações executivas, <strong>SharePoint</strong> para gestão e rastreamento documental (Posteriormente implementação de software de <strong>GRC</strong>), e <strong>SQL</strong> para consolidação de resultados em grandes volumes (se necessário).
-
           <h4>Resultados Práticos</h4>
           Dezenas de processos críticos e não críticos mapeados com precisão.
           Atendimento de 100% do cronograma estabelecido.
@@ -299,28 +269,22 @@
           Structured meetings with key business and technology areas to meet the annual BIA schedule.
           Utilized <strong>Kanban (JIRA)</strong> to control phases: planning, collection, validation, and publication.
           Adhered to deadlines stipulated in work instructions for BIA development, correction, and approval; documented evidence for each process until cycle completion.
-
           <h4>Conducting Interviews and Workshops</h4>
           Initiated contact with departments: Pre-alignment with managers and focal points, explaining BIA's objective, strategic importance of business continuity, and their role. Presented a schedule with defined deadlines and expected deliverables.
           Prepared customized interviews: Used previous year's BIA history, department structure, systems, <strong>SLAs</strong>, and pre-documented processes for contextual questions, building participant trust.
-
           <h4>Instruments and Methodology</h4>
           Methodology based on <strong>ISO 22301</strong> + <strong>COBIT</strong> + <strong>ITIL</strong>.
           Utilized structured <strong>Excel</strong> spreadsheets with mandatory fields and specific sections: Process name/description, BU, IT System dependencies, Key people/minimum quantity for operation, Key areas for process execution, Areas impacted by process absence, <strong>RTO</strong> (Recovery Time Objective) – maximum tolerable downtime, <strong>RPO</strong> (Recovery Point Objective) – maximum tolerable data loss, Minimum point of operation, <strong>ESG</strong> questions, Financial impact data due to interruption time for each mapped process, and Interruption history and evidence.
-
           <h4>Categorization and Criticality</h4>
           Classified processes as: Critical, High, Moderate, Low.
           Defined Impact Scores for: Image/reputation, Regulation/Compliance, Financial, Operational, Systems.
-
           <h4>Deliverables and Documentation</h4>
           Final document validated with manager and board.
           Recorded in <strong>SharePoint</strong> with version control.
           Executive presentation of consolidated results in <strong>PPT</strong> and <strong>Power BI</strong>.
           Included in audit and continuity governance dossiers.
-
           <h4>Tools Used</h4>
           <strong>JIRA</strong>, <strong>Advanced Excel</strong>, <strong>Power BI</strong> for consolidated criticality views, <strong>PowerPoint</strong> for executive presentations, <strong>SharePoint</strong> for document management and tracking (with future <strong>GRC</strong> software implementation), and <strong>SQL</strong> for consolidating large volumes of results (if necessary).
-
           <h4>Practical Results</h4>
           Dozens of critical and non-critical processes accurately mapped.
           100% adherence to the established schedule.
@@ -330,28 +294,23 @@
         </span>
       </p>
     </div>
-
     <div id="pco" class="content">
-      <button class="close-btn" onclick="closeContent()">&times;</button>
       <h3>PCO</h3>
       <p>
         <span class="lang-pt">
           <h4>Estruturação e Gestão Técnica</h4>
           Iniciamos com insumos da <strong>BIA</strong>: Cada PCO foi construído a partir das informações consolidadas na BIA: criticidade do processo, <strong>RTO/RPO</strong>, sistemas envolvidos, insumos, pessoas mínimas e tolerância à interrupção.
           Utilizei um modelo padronizado do plano, com base no ciclo <strong>PDCA</strong>, contendo: Nome do processo e responsável, Objetivo do plano, Escopo, Descrição da situação de crise ou cenário de ativação, Papel de cada área envolvida (TI, negócio, suporte, jurídico etc.), Lista de contatos críticos (internos e externos), Passo a passo das ações de resposta, Comunicação (quem aciona quem, por qual canal, em que tempo), Alternativas (sistemas manuais, registros paralelos, processos substitutos), Checklists de recuperação, RTO/RPO definidos e justificados, Plano de retorno à normalidade, e Histórico de testes e atualizações.
-
           <h4>Ferramentas Utilizadas na Construção</h4>
           Formulário em <strong>WORD</strong> estruturado com tabelas e parágrafos.
           <strong>PowerPoint</strong> para apresentações executivas do plano.
           <strong>SharePoint</strong> como repositório com controle de versão e rastreabilidade (integrado com ferramenta de <strong>GRC</strong>).
           <strong>JIRA</strong> para gestão das ações de construção e validação entre áreas e métricas de <strong>SLA</strong>.
-
           <h4>Validação e Revisão</h4>
           Validação com o dono do processo (aprovação do gestor).
           Consolidação final e submissão à gestão de continuidade (aprovação de GCN).
           Aprovação executiva (Diretoria).
           Revisão anual ou após eventos/crises reais (1 ano).
-
           <h4>Resultados Concretos</h4>
           Centenas de PCOs construídos do zero, com rastreabilidade e versionamento completo.
           100% dos planos testados com validação funcional e atendendo ao cronograma de elaboração e validação.
@@ -363,19 +322,16 @@
           <h4>Structuring and Technical Management</h4>
           Started with <strong>BIA</strong> inputs: Each BCP was built from consolidated BIA information: process criticality, <strong>RTO/RPO</strong>, involved systems, inputs, minimum personnel, and interruption tolerance.
           Utilized a standardized plan template, based on the <strong>PDCA</strong> cycle, containing: Process name and owner, Plan objective, Scope, Crisis situation/activation scenario description, Role of each involved area (IT, business, support, legal, etc.), List of critical contacts (internal and external), Step-by-step response actions, Communication (who activates whom, via which channel, when), Alternatives (manual systems, parallel records, substitute processes), Recovery checklists, Defined and justified RTO/RPO, Return-to-normal plan, and Test and update history.
-
           <h4>Tools Used in Construction</h4>
           Structured <strong>WORD</strong> forms with tables and paragraphs.
           <strong>PowerPoint</strong> for executive plan presentations.
           <strong>SharePoint</strong> as a repository with version control and traceability (integrated with <strong>GRC</strong> tool).
           <strong>JIRA</strong> for managing construction and validation actions between areas and <strong>SLA</strong> metrics.
-
           <h4>Validation and Review</h4>
           Validation with the process owner (manager approval).
           Final consolidation and submission to continuity management (BCM approval).
           Executive approval (Board of Directors).
           Annual review or after real events/crises (1 year).
-
           <h4>Concrete Results</h4>
           Hundreds of BCPs built from scratch, with complete traceability and versioning.
           100% of plans tested with functional validation and adherence to the development and validation schedule.
@@ -385,44 +341,36 @@
         </span>
       </p>
     </div>
-
     <div id="testes" class="content">
-      <button class="close-btn" onclick="closeContent()">&times;</button>
       <h3><span class="lang-pt">Testes & DR</span><span class="lang-en">Testing & DR</span></h3>
       <p>
         <span class="lang-pt">
           <h4>Planejamento e Agenda de Testes</h4>
           Estruturei agenda anual de testes, com definição de: Tipos de testes (mesa, <strong>DR</strong>), Processos e sistemas críticos envolvidos, Responsáveis técnicos e funcionais, Frequência e objetivos.
           Priorização dos testes baseada em criticidade (via <strong>BIA</strong>) e exigência de auditorias/certificações.
-
           <h4>Testes de Mesa (Tabletop)</h4>
           Testei o conhecimento e maturidade dos profissionais envolvidos nos planos através de simulações teóricas de cenários de crise (ex: falha de sistema, ausência de equipe, ataque cibernético).
           Promovi a participação de áreas de negócio, TI, Segurança, Facilities, Jurídico e Comunicação (quando necessário).
           Apliquei questões para avaliar o conhecimento dos pontos focais nos processos de <strong>GCN</strong> e utilizei checklists por participante.
           Realizei mediação com perguntas situacionais: “E se o sistema não retornar em 4h?” / “Quem acionaria o fornecedor?”.
-
           <h4>Testes Técnicos de DR (Disaster Recovery)</h4>
           Executei a recuperação real de sistemas ou ambientes em ambiente controlado previamente definido em escopo e validado com diretorias e áreas envolvidas.
           Validei: Backup e restauração, Failover de sistemas críticos, Tempo de retomada (comparado ao <strong>RTO</strong>), Integridade de dados (comparado ao <strong>RPO</strong>).
           Envolvimento ativo da equipe de infraestrutura, cloud, banco de dados e redes (se necessário).
-
           <h4>Documentação e Evidências</h4>
           Registro de: Participantes e funções, Ações tomadas e decisões, Conformidade com os <strong>PCOs</strong> e <strong>DRPs</strong> existentes, Pontos fortes, falhas, dúvidas ou gaps de processo.
           Coleta de evidências visuais (prints, logs, telas, anotações manuais com horário de máquina).
           Uso de modelo de relatório padronizado com trilha de auditoria.
-
           <h4>Ações Pós-Teste</h4>
           Condução de sessão de pós-mortem (lições aprendidas) com todas as áreas.
           Criação de plano de ação corretiva com prazos, responsáveis e severidade.
           Integração com sistema de gestão de ações (<strong>JIRA</strong>/ <strong>Excel</strong> / <strong>SharePoint</strong>).
           Atualização imediata de <strong>PCOs</strong> e <strong>DRPs</strong> conforme necessário.
-
           <h4>Ferramentas Utilizadas</h4>
           <strong>Excel</strong> para controle de cronogramas e checklists.
           <strong>Power BI</strong> para dashboards de maturidade e cobertura de testes.
           <strong>SharePoint</strong> para repositório de evidências e relatórios (integrado com ferramenta de <strong>GRC</strong>).
           <strong>JIRA</strong> / <strong>Kanban</strong> para planos de ação pós-testes.
-
           <h4>Resultados Concretos</h4>
           100% dos PCOs testados dentro de ciclo de um ano.
           Alta participação e engajamento nas simulações.
@@ -433,35 +381,29 @@
           <h4>Planning and Testing Schedule</h4>
           Structured annual testing schedule, defining: Test types (tabletop, <strong>DR</strong>), Critical processes and systems involved, Technical and functional responsible parties, Frequency and objectives.
           Prioritized tests based on criticality (via <strong>BIA</strong>) and audit/certification requirements.
-
           <h4>Tabletop Exercises</h4>
           Tested the knowledge and maturity of professionals involved in plans through theoretical crisis scenario simulations (e.g., system failure, team absence, cyberattack).
           Promoted participation from business areas, IT, Security, Facilities, Legal, and Communications (when necessary).
           Applied questions to assess focal points' knowledge of <strong>BCM</strong> processes and used participant checklists.
           Facilitated with situational questions: “What if the system doesn't recover in 4 hours?” / “Who would contact the vendor?”.
-
           <h4>Technical DR Tests (Disaster Recovery)</h4>
           Executed actual system or environment recovery in a controlled environment previously defined in scope and validated with leadership and involved departments.
           Validated: Backup and restoration, Critical system failover, Recovery time (compared to <strong>RTO</strong>), Data integrity (compared to <strong>RPO</strong>).
           Active involvement of infrastructure, cloud, database, and network teams (if necessary).
-
           <h4>Documentation and Evidence</h4>
           Recorded: Participants and roles, Actions taken and decisions, Compliance with existing <strong>BCPs</strong> and <strong>DRPs</strong>, Strengths, failures, questions, or process gaps.
           Collected visual evidence (screenshots, logs, screens, manual notes with machine timestamps).
           Used a standardized report template with an audit trail.
-
           <h4>Post-Test Actions</h4>
           Conducted post-mortem sessions (lessons learned) with all areas.
           Created corrective action plans with deadlines, responsible parties, and severity.
           Integrated with action management system (<strong>JIRA</strong> / <strong>Excel</strong> / <strong>SharePoint</strong>).
           Immediately updated <strong>BCPs</strong> and <strong>DRPs</strong> as needed.
-
           <h4>Tools Used</h4>
           <strong>Excel</strong> for schedule and checklist control.
           <strong>Power BI</strong> for maturity dashboards and test coverage.
           <strong>SharePoint</strong> for evidence and report repository (integrated with <strong>GRC</strong> tool).
           <strong>JIRA</strong> / <strong>Kanban</strong> for post-test action plans.
-
           <h4>Concrete Results</h4>
           100% of BCPs tested within a one-year cycle.
           High participation and engagement in simulations.
@@ -470,33 +412,27 @@
         </span>
       </p>
     </div>
-
     <div id="relatorios" class="content">
-      <button class="close-btn" onclick="closeContent()">&times;</button>
       <h3><span class="lang-pt">Relatórios & Indicadores</span><span class="lang-en">Reports & Indicators</span></h3>
       <p>
         <span class="lang-pt">
           <h4>Relatórios e Indicadores</h4>
           Elaborei relatórios executivos de <strong>BIA</strong> e <strong>PCO</strong> por processo, sumários de testes de mesa e <strong>DR</strong> (com lições aprendidas e plano de ação), e dossiês de continuidade para auditorias e comitês.
           Desenvolvi apresentações para comitê de crise ou diretoria, e criei indicadores estratégicos de <strong>GCN</strong>, integrados em dashboards visuais.
-
           <h4>Estrutura dos Relatórios</h4>
           Todos os relatórios incluem um resumo executivo, objetivo do relatório, status geral da continuidade, principais riscos mapeados ou eventos testados.
           Detalhamento técnico por seção, com: Status de BIAs realizadas (áreas, datas, criticidade), PCOs criados/validados/testados, Riscos prioritários, Status de testes (realizados, pendentes, reprovados), Matriz de riscos e impactos.
           Utilizei indicadores gráficos em <strong>Power BI</strong> para visualização de: % de planos testados vs. planejados, % de planos aprovados vs. em revisão, % de áreas capacitadas, Evolução do <strong>RTO</strong> médio, Cobertura por tipo de incidente.
-
           <h4>Ferramentas e Automações</h4>
           <strong>Power BI</strong> conectado ao <strong>SharePoint</strong> e <strong>Excel</strong> para visões dinâmicas.
           <strong>Excel</strong> estruturado com tabelas e gráficos.
           <strong>PowerPoint</strong> para apresentações executivas.
           Utilização do <strong>Power Automate</strong> para envio automático de alertas e status por e-mail.
-
           <h4>Auditoria e Compliance</h4>
           Relatórios formatados com versão, aprovador, data e rastreabilidade.
           Disponibilização em biblioteca específica no <strong>SharePoint</strong>, com controle de acesso (integrado com ferramenta de <strong>GRC</strong>).
           Suporte direto a auditorias <strong>ISO 22301</strong> e <strong>QMS</strong> (com trilha completa das ações).
           Organização por pastas: BIA / PCO / Testes / Planos de Ação / Relatórios executivos.
-
           <h4>Resultados e Diferenciais</h4>
           Entregas com linguagem técnica para a TI e acessível para a alta gestão.
           Aumento da confiança da liderança nas ações de <strong>GCN</strong>.
@@ -507,24 +443,20 @@
           <h4>Reports and Indicators</h4>
           Prepared executive <strong>BIA</strong> and <strong>BCP</strong> reports by process, tabletop and <strong>DR</strong> test summaries (with lessons learned and action plans), and continuity dossiers for audits and committees.
           Developed presentations for crisis committees or the board, and created strategic <strong>BCM</strong> indicators, integrated into visual dashboards.
-
           <h4>Report Structure</h4>
           All reports include an executive summary, report objective, overall continuity status, main mapped risks or tested events.
           Detailed technical breakdown by section, with: Status of completed BIAs (areas, dates, criticality), BCPs created/validated/tested, Priority risks, Test status (completed, pending, failed), Risk and impact matrix.
           Utilized graphical indicators in <strong>Power BI</strong> for visualization of: % of plans tested vs. planned, % of plans approved vs. under review, % of trained areas, Average <strong>RTO</strong> evolution, Coverage by incident type.
-
           <h4>Tools and Automations</h4>
           <strong>Power BI</strong> connected to <strong>SharePoint</strong> and <strong>Excel</strong> for dynamic views.
           Structured <strong>Excel</strong> with tables and charts.
           <strong>PowerPoint</strong> for executive presentations.
           Used <strong>Power Automate</strong> for automated email alerts and status updates.
-
           <h4>Audit and Compliance</h4>
           Reports formatted with version, approver, date, and traceability.
           Available in a specific <strong>SharePoint</strong> library, with access control (integrated with <strong>GRC</strong> tool).
           Direct support for <strong>ISO 22301</strong> and <strong>QMS</strong> audits (with full action trail).
           Organized by folders: BIA / BCP / Tests / Action Plans / Executive Reports.
-
           <h4>Results and Differentiators</h4>
           Deliverables with technical language for IT and accessible language for senior management.
           Increased leadership confidence in <strong>BCM</strong> actions.
@@ -533,43 +465,35 @@
         </span>
       </p>
     </div>
-
     <div id="treinamentos" class="content">
-      <button class="close-btn" onclick="closeContent()">&times;</button>
       <h3><span class="lang-pt">Treinamentos & Cultura de Continuidade</span><span class="lang-en">Training & Continuity Culture</span></h3>
       <p>
         <span class="lang-pt">
           <h4>Planejamento de Treinamentos</h4>
           Criei plano anual de capacitação em <strong>GCN</strong>, segmentado por: Temas de Continuidade, Instruções de Trabalho, Tipos de plano (PCO, DRP, resposta a crises).
           Mapeamento de necessidades de treinamento com base nos gaps identificados nas <strong>BIAs</strong>, testes e crises reais.
-
           <h4>Desenvolvimento de Conteúdo</h4>
           Desenvolvi conteúdo do zero, com foco em: Conceitos-chave de continuidade (<strong>RTO, RPO</strong>, impactos, cadeia crítica), Simulações reais, Procedimentos de ativação de planos, Responsabilidades durante crises (quem aciona, como, quando).
           Adaptei a linguagem para cada público: Operacional (foco em execução clara e rápida), Diretoria (impacto, estratégia, tomada de decisão), TI (integração entre contingência e tecnologia).
-
           <h4>Ferramentas e Formatos Utilizados</h4>
           Utilização de narração com <strong>IA</strong> (voz humanizada).
           Criação de vídeos com animação explicativa e storytelling real.
           Aplicação de <strong>Quiz</strong> interativo com validação de aprendizagem.
           <strong>Power BI</strong> para acompanhamento de adesão e performance.
           <strong>SharePoint</strong> para hospedagem das trilhas e controle de acesso.
-
           <h4>Monitoramento de Engajamento</h4>
           Apliquei indicadores como: % de adesão por área e por plano, Média de acertos nos quizzes, Tempo de conclusão do treinamento, Feedback qualitativo dos usuários.
           Uso de dashboards em tempo real para rastrear e reportar adesão à alta liderança e repescagem.
-
           <h4>Comunicação e Cultura</h4>
           Criei campanhas internas como “GCN na prática” e “Você saberia o que fazer em uma crise?”.
           Participação ativa em <strong>SIPATs</strong> e eventos internos.
           Inclusão de <strong>GCN</strong> nas trilhas de onboarding.
-
           <h4>Resultados Concretos (Incluindo LGPD)</h4>
           Mais de 90% de adesão nas áreas focais de GCN.
           100% de aproveitamento nos treinamentos obrigatórios.
           Aumento da autonomia das áreas na resposta a incidentes.
           Redução do improviso durante testes e crises simulados.
           Aumento da conscientização sobre a importância da <strong>LGPD</strong> dentro dos contextos de continuidade e resposta a incidentes.
-
           <h4>Diferenciais da Minha Atuação</h4>
           Capacidade de traduzir GCN técnico para linguagem acessível, transformando normas em conhecimento prático para as pessoas.
           Abordagem moderna, didática e automatizada.
@@ -579,34 +503,28 @@
           <h4>Training Planning</h4>
           Created an annual <strong>BCM</strong> training plan, segmented by: Continuity Topics, Work Instructions, Plan types (BCP, DRP, crisis response).
           Mapped training needs based on gaps identified in <strong>BIAs</strong>, tests, and real crises.
-
           <h4>Content Development</h4>
           Developed content from scratch, focusing on: Key continuity concepts (<strong>RTO, RPO</strong>, impacts, critical chain), Real simulations, Plan activation procedures, Responsibilities during crises (who activates, how, when).
           Adapted language for each audience: Operational (focus on clear and fast execution), Board (impact, strategy, decision-making), IT (contingency and technology integration).
-
           <h4>Tools and Formats Used</h4>
           Used <strong>AI</strong> narration (humanized voice).
           Created animated videos with explanatory storytelling.
           Applied interactive <strong>Quizzes</strong> with learning validation.
           <strong>Power BI</strong> for tracking engagement and performance.
           <strong>SharePoint</strong> for hosting training paths and access control.
-
           <h4>Engagement Monitoring</h4>
           Applied indicators such as: % of adherence by area and by plan, Average quiz scores, Training completion time, Qualitative user feedback.
           Used real-time dashboards to track and report adherence to senior leadership and for retakes.
-
           <h4>Communication and Culture</h4>
           Created internal campaigns like “BCM in Practice” and “Would you know what to do in a crisis?”.
           Actively participated in <strong>SIPATs</strong> (Internal Week for Accident Prevention at Work) and internal events.
           Included <strong>BCM</strong> in onboarding trails.
-
           <h4>Concrete Results (Including LGPD)</h4>
           +90% adherence in core BCM areas.
           100% completion rate for mandatory training.
           Increased departmental autonomy in incident response.
           Reduced improvisation during simulated tests and crises.
           Increased awareness of <strong>LGPD</strong> importance within continuity and incident response contexts.
-
           <h4>Differentiators of My Work</h4>
           Ability to translate technical BCM into accessible language, transforming standards into practical knowledge for people.
           Modern, didactic, and automated approach.
@@ -614,9 +532,7 @@
         </span>
       </p>
     </div>
-
     <div id="facilities" class="content">
-      <button class="close-btn" onclick="closeContent()">&times;</button>
       <h3><span class="lang-pt">Facilities, Infraestrutura Crítica e Desastres Físicos</span><span class="lang-en">Facilities, Critical Infrastructure & Physical Disasters</span></h3>
       <p>
         <span class="lang-pt">
@@ -624,32 +540,26 @@
           Solicitação de mapeamento de infraestruturas críticas: <strong>Geradores, nobreaks, sistemas de climatização, bombas de água, Sistemas de energia, TI física, oxigênio e elevadores</strong> (em ambiente hospitalar, seriam gases medicinais, UPS etc.).
           Alinhamento entre planos de contingência e procedimentos operacionais físicos.
           Apoio à identificação de pontos de falha únicos (<strong>SPOFs</strong>) e rotas alternativas.
-
           <h4>Apoio a Planos de Emergência e Simulados</h4>
           Suporte na criação e revisão dos planos de evacuação, incêndio e desastres naturais.
           Acompanhamento de simulados práticos com evacuação parcial de prédio, rotas de fuga e acionamento de brigadas.
           Condução de testes integrados entre tecnologia, segurança e engenharia predial.
-
           <h4>Preparação para Eventos de Força Maior</h4>
           Elaboração de planos corporativos para resposta a: <strong>Enchentes, alagamentos, vendavais, Falha de abastecimento de água e energia, Acesso físico bloqueado</strong> (protestos, pandemias, greves).
           Definição de rotas alternativas, apoio remoto e mobilização de equipes essenciais.
-
           <h4>Integração com Planos de Contingência (PCO/DR)</h4>
           Inclusão das rotas de fuga, planos de evacuação e ativos físicos essenciais nos <strong>PCOs</strong>.
           Apoio à validação técnica das condições do local para ativação do plano (ex: local backup tem refrigeração, gerador, acesso seguro?).
           Alinhamento entre responsável do processo e responsável técnico de infraestrutura em cenários críticos.
-
           <h4>Contatos de Emergência e Fornecedores Críticos</h4>
           Estruturação de cadastro de contatos de emergência: <strong>Facilities, manutenção, segurança patrimonial, fornecedores</strong>.
           Definição de canal de acionamento, horário de atendimento, <strong>SLA</strong> acordado.
           Inclusão no plano e nos fluxos de ativação; Testes de acionamento e atualização periódica.
-
           <h4>Ferramentas Utilizadas</h4>
           Matriz de infraestrutura crítica mapeada em <strong>Excel</strong> / <strong>SharePoint</strong>.
           Fluxogramas visuais de evacuação e contenção.
           Integração com Painel de <strong>GCN</strong> em <strong>Power BI</strong>.
           Checklist digital para avaliação de prontidão da estrutura.
-
           <h4>Resultados e Diferenciais</h4>
           Planos de continuidade com visão completa: processo, sistema, pessoas e espaço físico.
           Engajamento real das áreas de Facilities como parte estratégica da continuidade.
@@ -661,32 +571,26 @@
           Requested mapping of critical infrastructures: <strong>Generators, UPS, HVAC systems, water pumps, Power systems, physical IT, oxygen and elevators</strong> (in a hospital environment, this would include medical gases, UPS, etc.).
           Alignment between contingency plans and physical operational procedures.
           Supported the identification of Single Points of Failure (<strong>SPOFs</strong>) and alternative routes.
-
           <h4>Support for Emergency Plans and Drills</h4>
           Supported the creation and revision of evacuation, fire, and natural disaster plans.
           Monitored practical drills with partial building evacuation, escape routes, and brigade activation.
           Conducted integrated tests between technology, security, and building engineering.
-
           <h4>Preparation for Force Majeure Events</h4>
           Developed corporate response plans for: <strong>Floods, deluges, gales, Power and water supply failures, Blocked physical access</strong> (protests, pandemics, strikes).
           Defined alternative routes, remote support, and mobilization of essential teams.
-
           <h4>Integration with Contingency Plans (BCP/DR)</h4>
           Included escape routes, evacuation plans, and essential physical assets in <strong>BCPs</strong>.
           Supported technical validation of site conditions for plan activation (e.g., does backup site have cooling, generator, secure access?).
           Aligned process owner with infrastructure technical owner in critical scenarios.
-
           <h4>Emergency Contacts and Critical Suppliers</h4>
           Structured emergency contact registration: <strong>Facilities, maintenance, patrimonial security, suppliers</strong>.
           Defined activation channel, service hours, agreed <strong>SLA</strong>.
           Included in the plan and activation flows; activation tests and periodic updates.
-
           <h4>Tools Used</h4>
           Critical infrastructure matrix mapped in <strong>Excel</strong> / <strong>SharePoint</strong>.
           Fluxogramas visuais de evacuação e contenção.
           Integration with <strong>BCM Dashboard</strong> in <strong>Power BI</strong>.
           Digital checklist for evaluating structure readiness.
-
           <h4>Results and Differentiators</h4>
           Continuity plans with a comprehensive view: process, system, people, and physical space.
           Genuine engagement of Facilities areas as a strategic part of continuity.
@@ -695,38 +599,31 @@
         </span>
       </p>
     </div>
-
     <div id="prd" class="content">
-      <button class="close-btn" onclick="closeContent()">&times;</button>
       <h3><span class="lang-pt">PRD – Plano de Recuperação de Desastres</span><span class="lang-en">DRP – Disaster Recovery Plan</span></h3>
       <p>
         <span class="lang-pt">
           <h4>Estruturação do PRD – Etapas Executadas</h4>
           Consolidei os principais cenários de desastre com base na <strong>BIA</strong>, matriz de risco e histórico da organização: <strong>Falha em datacenter</strong> (on-premises e cloud), <strong>Incêndio, enchente, desabamento, Sequestro de dados (ransomware) e ataque cibernético, Pandemia, ausência em massa de colaboradores, Falha prolongada de energia, protestos, eventos extremos</strong>.
           Mapeamento das áreas críticas envolvidas: <strong>TI / Segurança da Informação, Facilities e Engenharia, Jurídico, RH, Comunicação, Diretoria executiva</strong> (decisão e mobilização).
-
           <h4>Componentes Técnicos do PRD</h4>
           <strong>Governança do plano:</strong> Definição de quem pode ativar, como é feita a escalada de decisão, e qual o tempo de resposta máximo por severidade.
           <strong>Fluxo de ativação documentado:</strong> Gatilhos para ativação, Responsáveis e suas ações imediatas, Caminhos de comunicação (quem aciona quem, e como).
           <strong>Matriz de severidade:</strong> Classificação do impacto (Operacional, Imagem, Regulatória, Financeira, Humana) e Níveis de resposta e comitês ativados conforme gravidade.
           <strong>Plano de mobilização:</strong> Local alternativo / estrutura remota, Apoio ao transporte, segurança e infraestrutura mínima, Apoio à equipe crítica (notebook, acesso VPN, energia).
           <strong>Checklist de recursos essenciais:</strong> TI (sistemas, conectividade, backups, login), Facilities (acesso, energia, clima, segurança), Pessoas (contatos críticos, escalas, substituição).
-
           <h4>Ferramentas e Formatos Utilizados</h4>
           Modelos de <strong>PRD</strong> em <strong>Word</strong> com sumário técnico e versão executiva.
           Fluxogramas visuais (<strong>Visio</strong> / <strong>PowerPoint</strong>) de ativação e resposta.
           Base de contatos crítica em <strong>Excel</strong> + <strong>SharePoint</strong> com revisão trimestral.
           Integração com o <strong>Power BI</strong> para status e planos relacionados.
-
           <h4>Entregáveis e Aplicação Prática</h4>
           <strong>PRD</strong> central que referencia: <strong>DRP</strong> técnico por sistema, <strong>PCOs</strong> de processos de negócio, Planos de comunicação de crise, Planos de emergência predial (evacuação, rotas de fuga, incêndio).
           Distribuído em versão simplificada para: Diretoria, Comitê de crise, Responsáveis de ativação.
-
           <h4>Governança e Atualização</h4>
           Repositório em <strong>SharePoint</strong> com controle de versão (integrado com ferramenta de <strong>GRC</strong>).
           Validação anual ou após cada crise/teste relevante.
           <strong>PRD</strong> auditado e referenciado na certificação <strong>ISO 22301</strong>.
-
           <h4>Resultados e Diferenciais da Minha Atuação</h4>
           Construção de um <strong>PRD</strong> realista, aplicável e integrado.
           Redução de tempo de resposta em simulações.
@@ -737,29 +634,24 @@
           <h4>DRP Structuring – Executed Steps</h4>
           Consolidated key disaster scenarios based on <strong>BIA</strong>, risk matrix, and organizational history: <strong>Datacenter failure</strong> (on-premises and cloud), <strong>Fire, flood, collapse, Data kidnapping (ransomware) and cyberattack, Pandemic, mass employee absence, Prolonged power failure, protests, extreme events</strong>.
           Mapped critical areas involved: <strong>IT / Information Security, Facilities and Engineering, Jurídico, RH, Comunicação, Executive Board</strong> (decision and mobilization).
-
           <h4>Technical Components of the DRP</h4>
           <strong>Plan Governance:</strong> Defined who can activate, how escalation of decision is made, and maximum response time by severity.
           <strong>Activation Flow Documented:</strong> Triggers for activation, Responsible parties and their immediate actions, Communication paths (who activates whom, and how).
           <strong>Severity Matrix:</strong> Impact classification (Operational, Image, Regulatory, Financial, Human) and Response levels and committees activated according to severity.
           <strong>Mobilization Plan:</strong> Alternative location / remote structure, Support for transportation, security, and minimum infrastructure, Support for critical team (laptop, VPN access, power).
           <strong>Essential Resource Checklist:</strong> IT (systems, connectivity, backups, login), Facilities (access, energy, climate, security), People (critical contacts, schedules, substitution).
-
           <h4>Tools and Formats Used</h4>
           <strong>DRP</strong> templates in <strong>Word</strong> with technical summary and executive version.
           Visual flowcharts (<strong>Visio</strong> / <strong>PowerPoint</strong>) for activation and response.
           Critical contact database in <strong>Excel</strong> + <strong>SharePoint</strong> with quarterly review.
           Integration with <strong>Power BI</strong> for status and related plans.
-
           <h4>Deliverables and Practical Application</h4>
           Central <strong>DRP</strong> referencing: <strong>DRP</strong> technical per system, <strong>PCOs</strong> of business processes, Crisis communication plans, Building emergency plans (evacuation, escape routes, fire).
           Distributed in simplified version to: Board, Crisis committee, Activation responsible parties.
-
           <h4>Governance and Updates</h4>
           Repository in <strong>SharePoint</strong> with version control (integrated with <strong>GRC</strong> tool).
           Annual validation or after each relevant crisis/test.
           <strong>DRP</strong> audited and referenced in <strong>ISO 22301</strong> certification.
-
           <h4>Results and Differentiators of My Work</h4>
           Construction of a realistic, applicable, and integrated <strong>DRP</strong>.
           Reduced response time in simulations.
@@ -768,9 +660,7 @@
         </span>
       </p>
     </div>
-
     <div id="auditoria" class="content">
-      <button class="close-btn" onclick="closeContent()">&times;</button>
       <h3><span class="lang-pt">Auditoria & Compliance</span><span class="lang-en">Audit & Compliance</span></h3>
       <p>
         <span class="lang-pt">
@@ -781,7 +671,6 @@
         </span>
       </p>
     </div>
-
   </section>
 
   <section id="skills">
@@ -843,7 +732,6 @@
       </li>
     </ul>
   </section>
-
   <section id="achievements">
     <h2><span class="lang-pt">Certificações e Conquistas</span><span class="lang-en">Certifications & Achievements</span></h2>
     <div class="achievements-grid">
@@ -854,6 +742,13 @@
         </div>
     </div>
   </section>
+
+  <div id="experience-modal" class="modal-overlay">
+    <div class="modal-content">
+        <button class="modal-close-btn">&times;</button>
+        <div id="modal-body"></div>
+    </div>
+  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -883,18 +778,14 @@
       function setupReadMore(currentLang) {
           document.querySelectorAll('.read-more-btn').forEach(button => {
               const lang = button.dataset.lang;
-              const moreContent = button.nextElementSibling; // Pega o .more-content-xx
-
+              const moreContent = button.nextElementSibling;
               if (lang === currentLang) {
                   button.style.display = 'block';
-                  // Reseta o texto do botão para o estado inicial
                   const isExpanded = moreContent.style.maxHeight && moreContent.style.maxHeight !== '0px';
                   button.textContent = isExpanded ? (lang === 'pt' ? 'Mostrar Menos' : 'Show Less') : (lang === 'pt' ? 'Leia Mais' : 'Read More');
               } else {
                   button.style.display = 'none';
               }
-
-              // Remove listener antigo para evitar duplicação
               const newClickHandler = function() {
                   const isExpanded = moreContent.style.maxHeight && moreContent.style.maxHeight !== '0px';
                   if (isExpanded) {
@@ -905,55 +796,45 @@
                       button.textContent = (lang === 'pt' ? 'Mostrar Menos' : 'Show Less');
                   }
               };
-              
-              if (button.clickHandler) {
-                  button.removeEventListener('click', button.clickHandler);
-              }
+              if (button.clickHandler) { button.removeEventListener('click', button.clickHandler); }
               button.addEventListener('click', newClickHandler);
               button.clickHandler = newClickHandler;
           });
       }
-
-      // Inicializa o "Leia Mais" para o idioma padrão
       const initialLang = document.body.classList.contains('lang-en') ? 'en' : 'pt';
       setupReadMore(initialLang);
 
-      // Interatividade dos Cards de Experiência Técnica com scroll
-      const cards = document.querySelectorAll('.card');
-      cards.forEach(card => card.addEventListener('click', () => {
-        const targetId = card.dataset.target;
-        const targetContent = document.getElementById(targetId);
+      // Lógica do Modal para a seção "Experiência Técnica"
+      const modal = document.getElementById('experience-modal');
+      if (modal) {
+          const modalBody = document.getElementById('modal-body');
+          const closeModalBtn = modal.querySelector('.modal-close-btn');
 
-        if (targetContent) {
-          const isActive = targetContent.classList.contains('active');
-
-          document.querySelectorAll('.card.active').forEach(c => c.classList.remove('active'));
-          document.querySelectorAll('.content.active').forEach(c => {
-            c.classList.remove('active');
-            c.style.maxHeight = null;
+          document.querySelectorAll('#experience .card').forEach(card => {
+              card.addEventListener('click', () => {
+                  const targetId = card.dataset.target;
+                  const contentSource = document.getElementById(targetId);
+                  
+                  if (contentSource) {
+                      modalBody.innerHTML = contentSource.innerHTML;
+                      modal.classList.add('active');
+                  }
+              });
           });
 
-          if (!isActive) {
-            card.classList.add('active');
-            targetContent.classList.add('active');
-            targetContent.style.maxHeight = targetContent.scrollHeight + 'px';
-            setTimeout(() => {
-                targetContent.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 300); // Leve atraso para a rolagem ser mais suave após a animação iniciar
+          function closeModal() {
+              modal.classList.remove('active');
           }
-        }
-      }));
 
-      // Função para fechar os cards
-      window.closeContent = () => {
-        document.querySelectorAll('.content.active').forEach(c => {
-          c.classList.remove('active');
-          c.style.maxHeight = null;
-        });
-        document.querySelectorAll('.card.active').forEach(c => c.classList.remove('active'));
-      };
+          closeModalBtn.addEventListener('click', closeModal);
+          modal.addEventListener('click', (e) => {
+              if (e.target === modal) {
+                  closeModal();
+              }
+          });
+      }
 
-      // Interatividade das listas expansíveis (Skills e Experiência) com scroll
+      // Lógica das seções "Skills" e "Experiência Profissional" (Acordeão)
       document.querySelectorAll('.skill-item').forEach(item => {
         const content = item.querySelector('.skill-content');
         if (!content) return;
@@ -961,16 +842,17 @@
 
         item.addEventListener('click', (e) => {
             if (e.target.closest('a')) return;
-
             const isActive = content.classList.contains('active');
-
-            document.querySelectorAll('.skill-content.active').forEach(activeContent => {
+            
+            // Fecha todos os outros da mesma lista
+            item.closest('.skills-list').querySelectorAll('.skill-content.active').forEach(activeContent => {
                 if (activeContent !== content) {
                     activeContent.classList.remove('active');
                     activeContent.style.maxHeight = '0';
                 }
             });
 
+            // Alterna o estado do item clicado
             content.classList.toggle('active');
             if (content.classList.contains('active')) {
                 content.style.maxHeight = content.scrollHeight + 'px';
