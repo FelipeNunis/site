@@ -16,8 +16,8 @@
        
        /* FORÇA A ALTURA EXATA PARA O CÍRCULO (!important) */
        height: 150px !important;   
-
-       object-position: 50% 40%;
+      
+       object-position: 50% 30%;
       
        /* Garante o círculo perfeito */
        border-radius: 50% !important; 
