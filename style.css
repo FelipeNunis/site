@@ -1,0 +1,141 @@
+:root { --primary: #334155; --accent: #64748B; --neutral-light: #F8FAFC; --neutral-dark: #E2E8F0; --text-light: #1F2937; --text-dark: #0F172A; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Inter', sans-serif; background: var(--neutral-light); color: var(--text-light); transition: background 0.3s, color 0.3s; }
+    body.dark { background: var(--text-light); color: var(--text-dark); }
+    /* Language toggle */
+    .lang-pt .lang-pt, .lang-en .lang-en { display: inline; }
+    .lang-pt .lang-en, .lang-en .lang-pt { display: none; }
+    /* Controls */
+    #controls { position: fixed; top: 1rem; right: 1rem; display: flex; gap: 0.5rem; z-index: 100; }
+    #controls button { background: var(--primary); color: white; border: none; padding: 0.5rem; border-radius: 4px; cursor: pointer; }
+    /* Header */
+    header { text-align: center; padding: 4rem 2rem; background: var(--primary); color: white; }
+    header h1 { margin: 0; font-size: 2.5rem; }
+    header p { margin: 0.5rem 0 0; font-size: 1rem; }
+    /* Sections */
+    section {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+    #about p {
+        line-height: 1.6;
+        margin-bottom: 1em; 
+    }
+    #about {
+        background: var(--neutral-dark);
+        padding: 1rem;
+        border-radius: 8px;
+    }
+    /* Cards */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); gap: 1rem; margin-top: 1rem; }
+    .card { background: var(--neutral-dark); padding: 1.5rem; border-radius: 12px; text-align: center; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform 0.4s ease, box-shadow 0.4s ease; border: 2px solid transparent; }
+    .card i { font-size: 2rem; margin-bottom: 0.5rem; }
+    .card span { font-weight: 600; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    
+    /* Oculta os painéis de conteúdo originais da seção Experiência, pois agora serão mostrados no modal */
+    #experience .content {
+      display: none;
+    }
+
+    /* Skills List */
+    .skills-list { list-style: none; padding: 0; }
+    .skill-item { background: var(--neutral-dark); padding: 0.75rem 1rem; border-radius: 8px; cursor: pointer; margin-bottom: 0.5rem; transition: background 0.3s; }
+    .skill-item:hover { background: var(--accent); color: white; }
+    .skill-content { max-height: 0; overflow: hidden; transition: max-height 0.6s ease-in-out; padding-left: 1.5rem; margin-top: 0.5rem; font-size: 0.9rem; border-left: 3px solid var(--primary); }
+    .skill-content.active { max-height: 5rem; /* Ajuste conforme necessário para o conteúdo do skill-item */ }
+    /* Responsive */
+    @media (max-width: 768px) { .cards { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); } }
+    @media (max-width: 480px) { .cards { grid-template-columns: 1fr; } }
+    /* Floating contact buttons */
+    #contact-button, #linkedin-button { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.2); position: fixed; z-index: 100; cursor: pointer; bottom: 1rem; }
+    #contact-button { right: 1rem; background: var(--primary); color: white; }
+    #linkedin-button { right: calc(1rem + 48px + 0.5rem); background: #0A66C2; color: white; }
+    
+    .read-more-btn {
+        background-color: var(--primary); color: white; border: none; padding: 10px 15px; margin-top: 15px; cursor: pointer; border-radius: 5px; font-size: 1em; transition: background-color 0.3s ease; display: block; margin-left: auto; margin-right: auto;
+    }
+    .read-more-btn:hover { background-color: var(--accent); }
+    .more-content-pt, .more-content-en {
+        max-height: 0; overflow: hidden; transition: max-height 0.5s ease-in-out; display: block; 
+    }
+
+    #achievements {
+        padding: 50px 20px; background-color: #f8f9fa; text-align: center;
+    }
+    #achievements h2 {
+        margin-bottom: 40px; color: #333; font-size: 2.2em;
+    }
+    .achievements-grid {
+        display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; padding: 20px;
+    }
+    .achievement-item {
+        background-color: #ffffff; border-radius: 10px; padding: 25px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; margin: 0 auto; max-width: 250px;
+    }
+    .achievement-item:hover {
+        transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+    .achievement-item img {
+        max-width: 120px; height: auto; margin-bottom: 15px; object-fit: contain;
+    }
+    .achievement-text {
+        font-size: 1.1em; font-weight: 600; color: #555; margin-bottom: 5px;
+    }
+    .certification-type {
+        font-size: 0.9em; color: #007bff; font-weight: 500; line-height: 1.3;
+    }
+    @media (max-width: 768px) {
+        .achievements-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; }
+        .achievement-item img { max-width: 100px; }
+    }
+
+    /* CSS para a janela Modal */
+    .modal-overlay {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    .modal-content {
+        background: var(--neutral-light);
+        color: var(--text-light);
+        padding: 2rem;
+        border-radius: 12px;
+        max-width: 800px;
+        width: 90%;
+        max-height: 80vh;
+        overflow-y: auto;
+        position: relative;
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+    }
+    body.dark .modal-content {
+        background: var(--text-dark);
+        color: var(--neutral-dark);
+    }
+    .modal-overlay.active .modal-content {
+        transform: scale(1);
+    }
+    .modal-close-btn {
+        position: absolute;
+        top: 10px; right: 15px;
+        background: none; border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: var(--primary);
+    }
+    body.dark .modal-close-btn {
+        color: var(--accent);
+    }
