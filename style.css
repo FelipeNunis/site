@@ -10,15 +10,25 @@
     #controls button { background: var(--primary); color: white; border: none; padding: 0.5rem; border-radius: 4px; cursor: pointer; }
     /* Header */
     header { text-align: center; padding: 4rem 2rem; background: var(--primary); color: white; }
-    .profile-photo {
-    width: 150px;           
-    height: 150px;          
-    border-radius: 50%;     
-    border: 5px solid white; 
-    object-fit: cover;      
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
-    margin-bottom: 1.5rem;   
-    }
+   .profile-photo {
+       /* FORÇA A LARGURA EXATA (Mudei para !important) */
+       width: 150px !important;    
+       
+       /* FORÇA A ALTURA EXATA PARA O CÍRCULO (!important) */
+       height: 150px !important;   
+       
+       /* Garante o círculo perfeito */
+       border-radius: 50% !important; 
+       
+       /* Outros estilos que você já tem */
+       border: 5px solid white;
+       object-fit: cover; /* ESSENCIAL para não distorcer */
+       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+       margin-bottom: 1.5rem;
+       
+       /* Garante que se comporte como um bloco inline centralizado */
+       display: inline-block !important; 
+   }
     header h1 { margin: 0; font-size: 2.5rem; }
     header p { margin: 0.5rem 0 0; font-size: 1rem; }
     /* Sections */
